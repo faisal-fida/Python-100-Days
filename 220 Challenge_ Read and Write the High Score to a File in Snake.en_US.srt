@@ -1,0 +1,364 @@
+1
+00:00:00,300 --> 00:00:02,520
+It's time for your challenge.
+
+2
+00:00:02,970 --> 00:00:05,760
+You've already seen how we've managed to get the snake game
+
+3
+00:00:05,940 --> 00:00:08,160
+to keep track of the high score.
+
+4
+00:00:08,760 --> 00:00:13,320
+And when the user scores a number that's greater than the high score,
+
+5
+00:00:13,620 --> 00:00:18,090
+then we replace that high score with the new value. But unfortunately
+
+6
+00:00:18,180 --> 00:00:23,180
+as you saw previously, at the moment when we run this game and we achieve a new
+
+7
+00:00:23,580 --> 00:00:27,780
+high score, the next time that we run the game again
+
+8
+00:00:27,840 --> 00:00:29,490
+that is completely lost.
+
+9
+00:00:30,090 --> 00:00:34,290
+So the first thing I want you to do is to right click on your project,
+
+10
+00:00:34,380 --> 00:00:38,280
+create a new file and call it data.txt.
+
+11
+00:00:38,340 --> 00:00:41,280
+So we're going to create a data text file.
+
+12
+00:00:41,880 --> 00:00:46,680
+Now this data text file is just going to contain a single number,
+
+13
+00:00:47,100 --> 00:00:47,933
+zero.
+
+14
+00:00:48,240 --> 00:00:53,240
+And we're going to use the data that's in this data.txt file to keep track of
+
+15
+00:00:54,030 --> 00:00:54,863
+the high score.
+
+16
+00:00:55,440 --> 00:01:00,240
+And it's your job to figure out how you can convert this simple attribute here,
+
+17
+00:01:00,240 --> 00:01:05,240
+high score, to instead of using a number that we've just created in the code,
+
+18
+00:01:06,630 --> 00:01:10,530
+I want you to use the number that's inside data.txt.
+
+19
+00:01:10,770 --> 00:01:14,040
+So you'll need to read from it here and then later on,
+
+20
+00:01:14,070 --> 00:01:18,450
+you'll need to write to it when we reset the game and check
+
+21
+00:01:18,480 --> 00:01:22,800
+if there is a new high score. Everything going well,
+
+22
+00:01:22,800 --> 00:01:24,330
+you should be able to run the game,
+
+23
+00:01:24,360 --> 00:01:29,360
+achieve a new high score and then stop and rerun the game and still see that
+
+24
+00:01:29,520 --> 00:01:33,870
+high score showing up. Think about what you learned in the last lesson,
+
+25
+00:01:34,110 --> 00:01:39,110
+have a think about how you can convert the text in here into a number using
+
+26
+00:01:40,080 --> 00:01:43,890
+what you've learned in previous lessons and pause the video and give this
+
+27
+00:01:43,890 --> 00:01:44,723
+challenge a go.
+
+28
+00:01:48,680 --> 00:01:49,100
+All right.
+
+29
+00:01:49,100 --> 00:01:53,990
+So we know that we've already got this file, data.txt, and it already
+
+30
+00:01:53,990 --> 00:01:58,850
+contains the number zero. So instead of using this line of code,
+
+31
+00:01:59,180 --> 00:02:02,600
+we're going to be reading from that file to get that zero.
+
+32
+00:02:03,110 --> 00:02:06,050
+Let's delete this line of code. And instead,
+
+33
+00:02:06,380 --> 00:02:09,890
+I'm going to open my file with the file name
+
+34
+00:02:09,890 --> 00:02:14,600
+that is data.txt. And the file name is, of course, a string
+
+35
+00:02:14,630 --> 00:02:17,510
+like you see here wrapped in quotation marks,
+
+36
+00:02:18,080 --> 00:02:21,650
+and we're going to use the with keywords so that we don't have to bother about
+
+37
+00:02:21,860 --> 00:02:23,240
+closing the file again.
+
+38
+00:02:23,450 --> 00:02:28,040
+We can get Python to manage it for us. with opening this file,
+
+39
+00:02:28,100 --> 00:02:32,000
+and I'm going to save that file to a variable called data.
+
+40
+00:02:32,750 --> 00:02:37,700
+Now I'm going to use that data and read from it. Now,
+
+41
+00:02:37,730 --> 00:02:39,110
+once I've read from it,
+
+42
+00:02:39,200 --> 00:02:44,200
+I should end up with some sort of string that's going to represent the contents
+
+43
+00:02:44,810 --> 00:02:45,740
+of this file.
+
+44
+00:02:46,370 --> 00:02:50,270
+So that string will need to be converted to an integer
+
+45
+00:02:50,360 --> 00:02:52,460
+if we want to use it as a number
+
+46
+00:02:52,730 --> 00:02:55,850
+which we can increase and change in our game.
+
+47
+00:02:56,240 --> 00:03:01,060
+So I'm going to type convert it into an integer. And then finally,
+
+48
+00:03:01,090 --> 00:03:05,320
+I'm going to save that as the value for our new attribute,
+
+49
+00:03:05,380 --> 00:03:09,940
+self.high_score. That's the reading part done
+
+50
+00:03:10,000 --> 00:03:12,190
+and if we run our code as it is,
+
+51
+00:03:12,250 --> 00:03:15,130
+it should already work as it did before,
+
+52
+00:03:15,460 --> 00:03:17,560
+but it won't have the feature that we want
+
+53
+00:03:17,560 --> 00:03:21,340
+which is to be able to quit out of the game,
+
+54
+00:03:21,700 --> 00:03:23,620
+stop and rerun.
+
+55
+00:03:23,920 --> 00:03:28,780
+So it still not saving the latest high score to that data.txt.
+
+56
+00:03:28,780 --> 00:03:33,220
+You can see it's still zero. So where do we want to save it? Well,
+
+57
+00:03:33,220 --> 00:03:36,610
+it's got to happen every time we adjust the high score.
+
+58
+00:03:37,060 --> 00:03:40,450
+When the score is greater than the current high score,
+
+59
+00:03:40,690 --> 00:03:44,950
+we set the high score to the new score. But in addition,
+
+60
+00:03:44,980 --> 00:03:47,830
+we're going to read from a file data.txt.
+
+61
+00:03:48,130 --> 00:03:50,020
+So let's use our syntax with,
+
+62
+00:03:50,260 --> 00:03:55,260
+and then open, again, and let's pass in the name of our file, data.txt.
+
+63
+00:03:56,320 --> 00:04:01,000
+And remember that we also need to change the mode to 'w' for
+
+64
+00:04:01,000 --> 00:04:05,830
+write because otherwise, it's not going to let us write to that file. Now,
+
+65
+00:04:05,860 --> 00:04:10,390
+once we've opened it and we've saved it as a variable called data,
+
+66
+00:04:10,720 --> 00:04:15,340
+then we can write to that data using data.write.
+
+67
+00:04:15,850 --> 00:04:19,600
+And what are we going to write to it? Well, we have to write a string.
+
+68
+00:04:19,630 --> 00:04:24,630
+So let's use an f-string to convert our current self.high_score into a
+
+69
+00:04:26,260 --> 00:04:31,240
+string, and then write that into our file, data.txt.
+
+70
+00:04:32,770 --> 00:04:36,490
+Now notice what happens when I run my code.
+
+71
+00:04:36,490 --> 00:04:41,350
+So I'm going to achieve a new high score of, um,
+
+72
+00:04:41,560 --> 00:04:45,670
+2, which I'm very proud of. And now if I hit stop,
+
+73
+00:04:45,700 --> 00:04:48,490
+take a look at data.txt. It's been updated,
+
+74
+00:04:48,490 --> 00:04:51,880
+it's been rewritten by these two lines of code.
+
+75
+00:04:52,240 --> 00:04:54,760
+So now if I rerun my program,
+
+76
+00:04:55,000 --> 00:05:00,000
+you can see it already is showing my previous high score of 2,
+
+77
+00:05:00,460 --> 00:05:03,880
+and I can keep playing this game and accumulate my high score
+
+78
+00:05:04,150 --> 00:05:07,570
+and all of that data will be saved to my file
+
+79
+00:05:07,630 --> 00:05:10,450
+data.txt, like that.
+
+80
+00:05:11,230 --> 00:05:14,080
+So did you manage to get this right? And by the way,
+
+81
+00:05:14,080 --> 00:05:16,420
+if you see this keyboard interrupt, don't worry.
+
+82
+00:05:16,420 --> 00:05:21,070
+That's just because we clicked on the stop button to stop our program because it
+
+83
+00:05:21,070 --> 00:05:25,330
+wants to keep on going forever until we achieve the highest score of them
+
+84
+00:05:25,330 --> 00:05:30,330
+all. The point of this exercise is to try and get you to review what we learned
+
+85
+00:05:30,790 --> 00:05:34,810
+in the last lesson, which is opening a file, reading the file,
+
+86
+00:05:35,020 --> 00:05:39,760
+and also writing to the file and remembering the mode that we have to change.
+
+87
+00:05:40,360 --> 00:05:45,360
+And hopefully, you'll start to see how this could be really useful in terms of
+
+88
+00:05:45,700 --> 00:05:50,650
+improving the usability of our programs in our games.
+
+89
+00:05:51,850 --> 00:05:55,330
+Now in the next lesson, we're going to talk more than just about files.
+
+90
+00:05:55,360 --> 00:05:58,810
+We're going to talk about file paths and directories.
+
+91
+00:05:59,260 --> 00:06:01,810
+So for all of that and more, I'll see you there.
+

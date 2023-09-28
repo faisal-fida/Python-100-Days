@@ -1,0 +1,920 @@
+1
+00:00:00,240 --> 00:00:05,580
+Now, before we can start deploying our website, the first thing we have to do and we have to understand
+
+2
+00:00:05,820 --> 00:00:12,690
+is something called version control. And we're going to be using the most popular technology for version
+
+3
+00:00:12,690 --> 00:00:15,650
+control, which is Git and GitHub.
+
+4
+00:00:16,410 --> 00:00:18,240
+So let's talk about version control
+
+5
+00:00:18,240 --> 00:00:19,590
+in its simplest form.
+
+6
+00:00:19,860 --> 00:00:23,440
+Let's say that I create a new code file and I write a few lines in it.
+
+7
+00:00:23,850 --> 00:00:27,320
+Now I decide to put it under version control using Git,
+
+8
+00:00:27,330 --> 00:00:31,320
+and let's say that I call this save point as number one.
+
+9
+00:00:31,380 --> 00:00:33,370
+Now this is my first version.
+
+10
+00:00:33,930 --> 00:00:38,840
+So later on, as I progress, I write maybe a few more lines of code.
+
+11
+00:00:39,240 --> 00:00:45,350
+And at this point I decide to make another save point and I call this my second version.
+
+12
+00:00:45,990 --> 00:00:52,830
+So further down the line, I accidentally screw up my entire code file and it's irrepairable.
+
+13
+00:00:52,860 --> 00:00:59,910
+And I get to the point where I would rather burn my entire code file rather than having to try and fix
+
+14
+00:00:59,910 --> 00:01:00,100
+it.
+
+15
+00:01:01,080 --> 00:01:06,870
+You do get into these situations because very often your code is interlinked and each class depends
+
+16
+00:01:06,870 --> 00:01:07,530
+on another.
+
+17
+00:01:07,530 --> 00:01:12,180
+And sometimes you can screw up in a way where, you know, all hope is lost.
+
+18
+00:01:12,180 --> 00:01:16,620
+And I simply just want to roll back to the last save point.
+
+19
+00:01:16,980 --> 00:01:19,050
+I can do that using Git.
+
+20
+00:01:19,380 --> 00:01:21,360
+I can do that using other tools as well
+
+21
+00:01:21,480 --> 00:01:25,140
+but the most popular tool and the one that we're going to be talking about is git.
+
+22
+00:01:25,380 --> 00:01:28,620
+So you can either compare your current code file,
+
+23
+00:01:28,830 --> 00:01:31,820
+so the current mess that you've made against a previous version
+
+24
+00:01:31,830 --> 00:01:38,610
+so at any of the save points before. Alternatively, you can simply just roll back to a previous version
+
+25
+00:01:38,730 --> 00:01:41,890
+and it doesn't have to be the one that was immediately previous.
+
+26
+00:01:41,910 --> 00:01:47,860
+You can go as far back or as far forwards as you like as long as you know which version you want.
+
+27
+00:01:48,090 --> 00:01:49,380
+So that's the theory.
+
+28
+00:01:49,560 --> 00:01:55,950
+And in order to put it into practice, let's see how we can create some files locally on our computer
+
+29
+00:01:56,160 --> 00:01:57,960
+and put it under version control.
+
+30
+00:02:00,770 --> 00:02:07,310
+Now, if you're Mac, Git is already preinstalled with every Mac operating system. But if you are on
+
+31
+00:02:07,310 --> 00:02:13,400
+Windows, I want you to head over to gitforwindows.org and click download to download it to your system.
+
+32
+00:02:14,180 --> 00:02:21,350
+Now, once you go through The Wizard, you should end up with a folder called Git installed to your 
+
+33
+00:02:21,350 --> 00:02:25,490
+C: drive under program files. So I can see it right here.
+
+34
+00:02:27,010 --> 00:02:33,910
+Now, inside this folder, you're going to open up a application called git-bash, and this is where
+
+35
+00:02:33,910 --> 00:02:36,610
+we're going to be executing all our commands.
+
+36
+00:02:37,360 --> 00:02:44,620
+So notice how previously we talked about the terminal and how to use command line control of your computer.
+
+37
+00:02:44,980 --> 00:02:49,570
+If you forgot about this, head back to day 54 where we covered this in detail.
+
+38
+00:02:50,350 --> 00:02:56,470
+But in order to get started and to be on the same page as the video, I want you to go ahead and cd
+
+39
+00:02:56,470 --> 00:02:58,860
+over to your home directory.
+
+40
+00:02:59,290 --> 00:03:00,940
+So that's the tilde symbol.
+
+41
+00:03:01,240 --> 00:03:04,630
+And once you're there, you should see this as your location.
+
+42
+00:03:05,570 --> 00:03:11,870
+Now, here, you're basically at the same level as being inside your C drive, inside users and then
+
+43
+00:03:11,870 --> 00:03:15,020
+under your current logged in users directory.
+
+44
+00:03:15,470 --> 00:03:21,620
+So this folder and all the things that it contains, you can see, are the same as all the things are
+
+45
+00:03:21,620 --> 00:03:24,920
+printed out when I hit ls at this location.
+
+46
+00:03:25,640 --> 00:03:31,040
+So you're now ready to follow along with the video and start working with Git.
+
+47
+00:03:32,550 --> 00:03:38,160
+Now, the first thing we're going to do is open up terminal, and inside terminal we're going to navigate
+
+48
+00:03:38,160 --> 00:03:39,500
+to our desktop.
+
+49
+00:03:40,050 --> 00:03:45,720
+So if you're not familiar with the command line and you haven't watched the module on the command line,
+
+50
+00:03:45,960 --> 00:03:50,460
+then I recommend you to take a look at it now because we're going to be using a lot of the commands
+
+51
+00:03:50,460 --> 00:03:52,540
+to create directories and navigate around.
+
+52
+00:03:52,800 --> 00:03:56,670
+So if you're not yet familiar, then it's a good time to take a look at that.
+
+53
+00:03:58,020 --> 00:04:05,520
+So the first thing I'm going to do is I'm going to cd into my desktop, and here I'm going to create
+
+54
+00:04:05,520 --> 00:04:07,890
+a new directory called Story.
+
+55
+00:04:09,360 --> 00:04:13,740
+Then I'm going to cd into this Story directory.
+
+56
+00:04:14,070 --> 00:04:17,790
+And if I show you with ls, you can see that it's completely empty.
+
+57
+00:04:17,950 --> 00:04:21,660
+And similarly, inside Finder, I can show you the same thing.
+
+58
+00:04:22,980 --> 00:04:27,240
+So let's go ahead and create some text files.
+
+59
+00:04:27,240 --> 00:04:33,810
+So I'm going to use touch to create a file called chapter1.txt, and then I'm going to open
+
+60
+00:04:33,810 --> 00:04:35,130
+chapter1.txt.
+
+61
+00:04:36,360 --> 00:04:43,680
+Now, on Windows, instead of using open as the command, it's start. So you can write the start chapter
+
+62
+00:04:43,680 --> 00:04:50,550
+1.txt and that will open it inside notepad. And you can continue following along with the video.
+
+63
+00:04:51,830 --> 00:04:56,660
+And it'll open it inside the default application which is Text Edit on a Mac.
+
+64
+00:04:57,110 --> 00:05:02,030
+Alternatively, you can use a text editor within the terminal, for example, vim.
+
+65
+00:05:03,200 --> 00:05:06,800
+Now, this is only for people who are really familiar with this.
+
+66
+00:05:06,800 --> 00:05:09,050
+So it's totally up to you what you decide to use.
+
+67
+00:05:09,050 --> 00:05:15,260
+But if you are not familiar with using terminal-based editors, then it's probably a good idea to just
+
+68
+00:05:15,260 --> 00:05:18,360
+stick with the open command and use Text Edit.
+
+69
+00:05:18,950 --> 00:05:24,170
+So let's go ahead and open Chapter one and let's write something inside, shall we?
+
+70
+00:05:27,990 --> 00:05:33,630
+OK, so there's my masterpiece done, I'm going to go ahead and hit save and I'm going to quit Text
+
+71
+00:05:33,630 --> 00:05:33,930
+Edit.
+
+72
+00:05:34,560 --> 00:05:38,010
+So that was our first chapter done.
+
+73
+00:05:38,400 --> 00:05:45,990
+So now let's create a git local repository and start tracking some of these file changes.
+
+74
+00:05:46,440 --> 00:05:50,190
+So to initialize git, we simply write git init.
+
+75
+00:05:51,270 --> 00:05:57,070
+And as you can see, it's initialized an empty git repository inside the story directory.
+
+76
+00:05:57,480 --> 00:06:01,880
+Now, if you have a look inside Finder, you actually can't see this .git at all.
+
+77
+00:06:02,280 --> 00:06:08,520
+But as we learned before, if you use ls -a, you can see all the hidden files and you can see that
+
+78
+00:06:08,880 --> 00:06:09,960
+.git is right there
+
+79
+00:06:10,200 --> 00:06:16,470
+and it's going to be used to track all your changes, to commit your changes, and to perform version
+
+80
+00:06:16,470 --> 00:06:17,000
+control.
+
+81
+00:06:17,340 --> 00:06:22,790
+So we're currently inside the story directory and you can also call this the working directory.
+
+82
+00:06:23,100 --> 00:06:29,340
+So as I mentioned before, using git and learning about version control, it comes with some of its own
+
+83
+00:06:29,340 --> 00:06:31,140
+terminology and language.
+
+84
+00:06:31,570 --> 00:06:36,420
+So I'm going to try and debunk and simplify a lot of these terms that you'll come across just so that
+
+85
+00:06:36,420 --> 00:06:40,190
+we can all be on the same page and we all understand what's going on.
+
+86
+00:06:40,710 --> 00:06:46,430
+So currently we are inside the working directory, which is the story directory.
+
+87
+00:06:46,980 --> 00:06:54,630
+And here, in order to start tracking the changes of my files, for example, chapter1.txt,
+
+88
+00:06:54,960 --> 00:07:00,150
+then I need to add this file to what's called a staging area.
+
+89
+00:07:00,720 --> 00:07:08,280
+And that is basically an intermediate place where you can pick and choose which files inside your working
+
+90
+00:07:08,280 --> 00:07:10,830
+directory that you want to commit.
+
+91
+00:07:11,370 --> 00:07:18,270
+So to see what's currently inside your staging area, you can use the git Status command and it shows
+
+92
+00:07:18,270 --> 00:07:22,170
+you that there are untracked files which will be shown in red.
+
+93
+00:07:22,330 --> 00:07:25,850
+And this is something that's simply inside your working directory,
+
+94
+00:07:26,070 --> 00:07:30,140
+so inside here, but it's not yet in the staging area.
+
+95
+00:07:30,600 --> 00:07:37,380
+So in order to add it to the staging area and to start tracking changes in it, then we have to use
+
+96
+00:07:37,380 --> 00:07:38,870
+the command git
+
+97
+00:07:38,880 --> 00:07:43,970
+add. So we're going to type git add and we're going to type the file name.
+
+98
+00:07:43,990 --> 00:07:46,590
+So in this case, it's chapter1.txt.
+
+99
+00:07:46,950 --> 00:07:48,710
+So go ahead and hit enter.
+
+100
+00:07:48,720 --> 00:07:55,140
+And then if we try using git status again, you can see that that file has been added as a new file
+
+101
+00:07:55,410 --> 00:07:56,820
+and it is now green.
+
+102
+00:07:56,830 --> 00:08:01,250
+So this is now in the staging area and it's ready to be committed.
+
+103
+00:08:01,410 --> 00:08:04,830
+So let's go ahead and commit this under version control.
+
+104
+00:08:05,250 --> 00:08:12,960
+So the command is git commit and I'm going to use the -m flag to add a commit message.
+
+105
+00:08:13,470 --> 00:08:16,280
+So the commit message is really, really important.
+
+106
+00:08:16,590 --> 00:08:23,030
+It's something that helps you keep track of what changes you have made in each commit.
+
+107
+00:08:23,130 --> 00:08:31,560
+So when you create a new save point, you want to be as explicit as possible about what changes were
+
+108
+00:08:31,560 --> 00:08:34,940
+made between the last save point and this current save point.
+
+109
+00:08:35,340 --> 00:08:43,290
+So for our initial commit, we can use something very simple like initial commit, and this shows that
+
+110
+00:08:43,290 --> 00:08:44,680
+this is our starting point.
+
+111
+00:08:45,090 --> 00:08:51,000
+Alternatively, if you want to be slightly more specific because in our case, we've actually completed
+
+112
+00:08:51,000 --> 00:08:54,840
+Chapter one, so you can write complete chapter 1.
+
+113
+00:08:56,190 --> 00:09:01,590
+Now, the thing that you'll realize is that usually with commit messages, they are written in the present
+
+114
+00:09:01,590 --> 00:09:03,600
+tense and this is the best practice.
+
+115
+00:09:03,600 --> 00:09:04,380
+So where as it
+
+116
+00:09:04,470 --> 00:09:08,160
+would probably make more sense, I guess, at least in my head
+
+117
+00:09:08,160 --> 00:09:15,450
+anyways to write completed chapter one as this save point, it's actually by convention that you should
+
+118
+00:09:15,450 --> 00:09:17,630
+always use the present tense 
+
+119
+00:09:17,670 --> 00:09:19,500
+so it's like you are doing it now.
+
+120
+00:09:19,740 --> 00:09:21,840
+You're submitting your changes now.
+
+121
+00:09:21,990 --> 00:09:25,350
+So let's go ahead and hit enter to make our first commit.
+
+122
+00:09:25,890 --> 00:09:31,890
+And you can see what commits you have made by using the git log command.
+
+123
+00:09:32,550 --> 00:09:41,250
+So you can see that this commit was made at this time by this person and it also has a hash and this
+
+124
+00:09:41,250 --> 00:09:45,480
+hash uniquely identifies this particular commit.
+
+125
+00:09:45,870 --> 00:09:51,540
+And then right at the end, you see this commit message of what this save point was all about.
+
+126
+00:09:52,860 --> 00:10:03,300
+So now I'm going to go ahead and create two more chapters. So let's just create chapter2.txt
+
+127
+00:10:04,020 --> 00:10:10,500
+and chapter3.txt and now we have three chapters.
+
+128
+00:10:10,680 --> 00:10:14,650
+And I'm going to go in and change some of these text files.
+
+129
+00:10:14,670 --> 00:10:16,050
+So let's say.
+
+130
+00:10:26,270 --> 00:10:28,510
+OK, so that's chapter two done.
+
+131
+00:10:28,910 --> 00:10:34,120
+And finally, let's go ahead and just open Chapter three and edit that as well.
+
+132
+00:10:46,110 --> 00:10:51,180
+All right, so all three files have been changed, and over here in Finder you can actually get a
+
+133
+00:10:51,420 --> 00:10:56,460
+quick peek at what the contents are, which is going to be really useful for me to be able to demonstrate
+
+134
+00:10:56,460 --> 00:10:59,250
+to you what Git is doing behind the background.
+
+135
+00:10:59,790 --> 00:11:05,860
+So now let's go ahead and add these two new files to our staging area.
+
+136
+00:11:05,890 --> 00:11:12,720
+So, again, if we use git status, you can see that there's two files that are untracked which are
+
+137
+00:11:12,720 --> 00:11:16,870
+only in the working directory and not yet inside the staging area.
+
+138
+00:11:17,280 --> 00:11:25,170
+So we can put it into the staging area by simply adding each of them, as we did before, git add and
+
+139
+00:11:25,170 --> 00:11:28,440
+writing something like chapter2.txt and then doing git
+
+140
+00:11:28,440 --> 00:11:30,110
+add chapter3.txt.
+
+141
+00:11:30,630 --> 00:11:36,750
+But as you can imagine, if you have quite a few files, then it can get incredibly tedious having to
+
+142
+00:11:36,750 --> 00:11:38,250
+do this one by one.
+
+143
+00:11:38,580 --> 00:11:40,600
+So of course there is a better way.
+
+144
+00:11:41,070 --> 00:11:46,740
+So instead of adding these files one by one, we can actually simply just say git add and then use
+
+145
+00:11:46,740 --> 00:11:51,810
+the DOT to specify everything inside this current directory,
+
+146
+00:11:52,020 --> 00:11:54,600
+so everything inside the story directory.
+
+147
+00:11:55,080 --> 00:12:00,990
+So now if I go ahead and hit enter and then let's go to git status again, you can see that there's
+
+148
+00:12:00,990 --> 00:12:08,310
+two new files that have been added to the staging area. And now we're going to commit those two files
+
+149
+00:12:08,310 --> 00:12:11,420
+to a new commit, to a new save point.
+
+150
+00:12:11,880 --> 00:12:14,910
+And you know what to do. If you're following along with me,
+
+151
+00:12:15,120 --> 00:12:16,380
+go ahead and give it a go.
+
+152
+00:12:20,510 --> 00:12:27,860
+All right, so how was that? If you remember, the command is git commit and we're going to use the
+
+153
+00:12:28,070 --> 00:12:35,930
+-m flag to specify a commit message, and we're going to write a message that is in the present tense.
+
+154
+00:12:36,350 --> 00:12:42,440
+So let's say complete chapter 2 and 3.
+
+155
+00:12:43,940 --> 00:12:50,420
+So that's everything I've done between the initial commit and this commit.
+
+156
+00:12:50,600 --> 00:12:54,740
+The only difference is the fact that I've completed now chapter 2 and chapter 3.
+
+157
+00:12:55,250 --> 00:12:57,870
+So let's go ahead and hit enter.
+
+158
+00:12:58,550 --> 00:13:00,830
+So again, let's check it out
+
+159
+00:13:00,830 --> 00:13:08,960
+using git log. We can see that we now have two commits both with different hashes because they are unique
+
+160
+00:13:08,960 --> 00:13:09,820
+and they are different.
+
+161
+00:13:10,280 --> 00:13:15,530
+So the initial one was complete chapter one, and it was done at this time.
+
+162
+00:13:15,920 --> 00:13:21,830
+And then later on, about five minutes later, I completed chapter two and three, and that was the
+
+163
+00:13:21,830 --> 00:13:22,910
+second commit.
+
+164
+00:13:23,420 --> 00:13:26,260
+And this is where we are at right now.
+
+165
+00:13:26,270 --> 00:13:33,740
+So you can see by the head, by this word HEAD, this is the position or the current state that we
+
+166
+00:13:33,740 --> 00:13:34,190
+are in.
+
+167
+00:13:34,490 --> 00:13:37,430
+So I just want to quickly recap what we've just done.
+
+168
+00:13:37,940 --> 00:13:43,280
+So we created a file in our working directory inside our story directory.
+
+169
+00:13:43,640 --> 00:13:50,790
+So the working directory is the folder or the directory where you initialize your git repository.
+
+170
+00:13:51,080 --> 00:13:55,420
+When we said git init, we did that inside the story directory.
+
+171
+00:13:55,460 --> 00:13:57,370
+So that becomes our working directory.
+
+172
+00:13:57,710 --> 00:14:03,950
+And from now on, git is going to try and track the changes that it sees between the working directory
+
+173
+00:14:04,220 --> 00:14:06,740
+and the local repository.
+
+174
+00:14:07,490 --> 00:14:15,800
+So in the beginning, we created a file inside our working directory, inside Story, and then we used
+
+175
+00:14:15,800 --> 00:14:19,040
+git add to push it to the staging area.
+
+176
+00:14:19,310 --> 00:14:24,560
+Now, the reason why there is this intermediate staging area, because you might wonder why not just
+
+177
+00:14:24,560 --> 00:14:27,200
+go from the working directory straight to the repository.
+
+178
+00:14:27,500 --> 00:14:29,390
+Why do we need this extra step?
+
+179
+00:14:29,840 --> 00:14:37,490
+Well, sometimes you might not want to add all of your files to be tracked or all of your files to be
+
+180
+00:14:37,490 --> 00:14:38,260
+committed.
+
+181
+00:14:38,600 --> 00:14:44,120
+So the staging area is a good place to try and figure out what are the things that you want git to ignore
+
+182
+00:14:44,330 --> 00:14:46,780
+and what are the things that you want to be tracked.
+
+183
+00:14:47,180 --> 00:14:54,230
+So once we've used git add, we've put our file into the staging area and we're happy with the changes
+
+184
+00:14:54,230 --> 00:15:01,400
+that we are going to commit, then the next step is to go ahead and commit it using the git commit command.
+
+185
+00:15:02,210 --> 00:15:06,230
+So now our file is inside our local repository,
+
+186
+00:15:06,230 --> 00:15:11,870
+so that .git. And that version is given a name through the commit message.
+
+187
+00:15:12,350 --> 00:15:20,180
+So that means that even if we've messed up our file, we can still use the last version that's under
+
+188
+00:15:20,180 --> 00:15:28,280
+version control and we can use a special command called git checkout to revert back or roll back to
+
+189
+00:15:28,280 --> 00:15:31,160
+the last position in our local repository.
+
+190
+00:15:31,370 --> 00:15:36,540
+So let me show you what that looks like in the command line and how we would do that in practice.
+
+191
+00:15:37,100 --> 00:15:42,440
+So at the moment, I've got three nicely written chapters and I have a feeling my book is going to be
+
+192
+00:15:42,440 --> 00:15:43,160
+a big seller.
+
+193
+00:15:43,430 --> 00:15:51,560
+So now let's say that I have, you know, been working on Chapter 3 and I have completely messed
+
+194
+00:15:51,560 --> 00:15:52,130
+everything up.
+
+195
+00:15:52,130 --> 00:15:58,580
+I just, you know, fell asleep on my keyboard and I happened to have saved my file.
+
+196
+00:15:58,820 --> 00:16:02,930
+And now if you have a look at it, it's now just mumbo-jumbo.
+
+197
+00:16:02,930 --> 00:16:04,940
+And I've ruined my masterpiece.
+
+198
+00:16:05,390 --> 00:16:13,060
+But fear not because we have a version control and we have git enabled, so we have nothing to worry about.
+
+199
+00:16:13,580 --> 00:16:18,540
+I can actually revert the changes that I've made locally in my working directory.
+
+200
+00:16:18,800 --> 00:16:24,710
+So at this point you can use git status to see that we have modifications in our chapter3.txt
+
+201
+00:16:24,710 --> 00:16:29,410
+file that have not yet been committed or added to the staging area.
+
+202
+00:16:29,840 --> 00:16:35,650
+So if we wanted to, we can actually revert this back to its previous glory.
+
+203
+00:16:36,260 --> 00:16:42,950
+But before we do that, we can use a git command to check out what are the differences between the current
+
+204
+00:16:42,950 --> 00:16:47,720
+version of Chapter three and the last save point in our git repository?
+
+205
+00:16:48,230 --> 00:16:55,490
+So to do that, you can use the command git diff, so the difference, and we'll give it the Chapter three
+
+206
+00:16:56,330 --> 00:16:57,260
+file name.
+
+207
+00:16:57,590 --> 00:17:03,350
+And if you hit enter, you can see that this is the part that was deleted, so the part in red.
+
+208
+00:17:03,830 --> 00:17:08,700
+And then this was the part that was added, which is our gobbledygook.
+
+209
+00:17:09,080 --> 00:17:14,660
+So now if I've looked at these differences, it might just be that, you know, there's only a few mistakes
+
+210
+00:17:14,900 --> 00:17:16,730
+in my new version of Chapter three
+
+211
+00:17:17,000 --> 00:17:19,490
+and I just want to maybe copy some things over
+
+212
+00:17:20,020 --> 00:17:28,210
+or have a look at how I did certain things previously and change my current file, but other times it
+
+213
+00:17:28,210 --> 00:17:31,960
+might be that, you know, it's just you want to torch the new file.
+
+214
+00:17:31,960 --> 00:17:34,150
+You just don't want anything to do with it.
+
+215
+00:17:34,150 --> 00:17:37,470
+And you would much rather roll back to the previous version.
+
+216
+00:17:37,990 --> 00:17:44,200
+So if you want to do that, then there is a command called git checkout that is going to be really,
+
+217
+00:17:44,200 --> 00:17:45,270
+really useful for you.
+
+218
+00:17:45,790 --> 00:17:51,820
+So git checkout and then we're going to specify the name of the file that we want to checkout which
+
+219
+00:17:51,820 --> 00:17:53,440
+is chapter3.txt.
+
+220
+00:17:53,860 --> 00:17:59,620
+And if you just watch over here which is the preview of the current version of chapter3.txt,
+
+221
+00:18:00,190 --> 00:18:08,110
+once I hit enter on this command that basically asks to roll back this Chapter three to the last version
+
+222
+00:18:08,110 --> 00:18:11,120
+that was committed in our local repository.
+
+223
+00:18:11,530 --> 00:18:14,620
+So if I hit enter, you can see that almost immediately
+
+224
+00:18:14,920 --> 00:18:22,420
+my chapter three has been restored to its previous glorious state and this is the version of chapter
+
+225
+00:18:22,420 --> 00:18:26,210
+three at the last checkpoint at which I committed it.
+
+226
+00:18:26,620 --> 00:18:30,670
+So that was this one, which is completed chapter 2 and 3.
+
+227
+00:18:31,000 --> 00:18:38,950
+So whereas in this lesson we've looked mostly at local implementations of git, so saving these versions
+
+228
+00:18:38,950 --> 00:18:40,450
+on our computer locally,
+
+229
+00:18:40,930 --> 00:18:46,360
+in the next lesson, I'm going to talk about GitHub and creating remote repositories.
+
+230
+00:18:46,630 --> 00:18:47,620
+So I'll see you there.
+

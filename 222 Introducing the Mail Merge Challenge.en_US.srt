@@ -1,0 +1,232 @@
+1
+00:00:00,180 --> 00:00:05,550
+All right, guys, it's time to put what you've learned to the test. Now in this project, we're going
+
+2
+00:00:05,550 --> 00:00:08,220
+to be doing a little bit of mail merging.
+
+3
+00:00:08,550 --> 00:00:12,630
+So mail merging is where you take something like what
+
+4
+00:00:12,630 --> 00:00:20,210
+we have a list of names, for example, and we want to insert each of these names into a letter.
+
+5
+00:00:20,490 --> 00:00:26,040
+So instead of saying dear [name], you are invited to my birthday the Saturday, it should say dear
+
+6
+00:00:26,040 --> 00:00:29,240
+and then it would replace that with whatever is here.
+
+7
+00:00:29,580 --> 00:00:31,710
+Take a look at this example file.
+
+8
+00:00:32,040 --> 00:00:38,070
+You can see that it replaced the name placeholder with the first name in the invited_names.txt
+
+9
+00:00:38,070 --> 00:00:38,550
+file.
+
+10
+00:00:39,060 --> 00:00:42,930
+Your objective is to write some python code to automate the process.
+
+11
+00:00:43,950 --> 00:00:50,940
+So what you're going to end up with is a bunch of letters, one for each of the names inside the invited_
+
+12
+00:00:50,940 --> 00:00:58,590
+names.txt and the letters are going to be named like this: letter_for_ and
+
+13
+00:00:58,590 --> 00:01:00,120
+then the name of the person.
+
+14
+00:01:00,360 --> 00:01:07,770
+And they're going to be saved in a txt format, which you can open either in Google Docs or in Microsoft
+
+15
+00:01:07,770 --> 00:01:08,190
+Word.
+
+16
+00:01:08,670 --> 00:01:10,950
+And it's basically ready for printing.
+
+17
+00:01:11,530 --> 00:01:16,770
+So I've made it a little bit harder for you by adding in a whole bunch of folders.
+
+18
+00:01:16,980 --> 00:01:21,330
+And each of these files are nested inside a bunch of folders.
+
+19
+00:01:21,330 --> 00:01:25,230
+So, for example, starting letter is inside letters, which is inside input.
+
+20
+00:01:25,770 --> 00:01:31,500
+And then the letters that you're going to generate are going to need to go into this folder called Ready
+
+21
+00:01:31,500 --> 00:01:35,430
+ToSend, which is inside output. And no cheating.
+
+22
+00:01:35,430 --> 00:01:38,010
+I don't want you moving around any of these files.
+
+23
+00:01:38,160 --> 00:01:44,730
+You're going to be using what you've learned about directories and file paths to do everything without
+
+24
+00:01:44,730 --> 00:01:47,850
+needing to drag and drop or move anything around manually.
+
+25
+00:01:48,750 --> 00:01:50,340
+I've got some starting files for you.
+
+26
+00:01:50,430 --> 00:01:56,520
+So the first thing I want you to do is to go to the course resources and download the zip file, which
+
+27
+00:01:56,520 --> 00:01:58,140
+will be your starting project code.
+
+28
+00:01:58,740 --> 00:02:05,130
+Once you open it within PyCharm, it's going to ask you to configure the interpreter. So you can either
+
+29
+00:02:05,130 --> 00:02:10,230
+go ahead and click on that pop-up, or if it disappears, then just click on the event log and then click
+
+30
+00:02:10,230 --> 00:02:15,330
+on Configure Python Interpreter and then select the latest interpreter that you have installed.
+
+31
+00:02:15,660 --> 00:02:19,200
+So in my case, it's 3.8, but by the time you're watching this, it'll probably be 
+
+32
+00:02:19,200 --> 00:02:21,120
+3.9 or even later.
+
+33
+00:02:21,660 --> 00:02:27,290
+And once that's done, then you can go ahead and have a look inside main.py.
+
+34
+00:02:27,840 --> 00:02:30,030
+So here I've got some instructions for you.
+
+35
+00:02:30,540 --> 00:02:36,750
+First, you're going to create a letter using the starting_letter.txt, which is right here
+
+36
+00:02:36,750 --> 00:02:43,130
+nested two folders deep, and then you're going to use each of the names inside invited_names.
+
+37
+00:02:43,140 --> 00:02:52,320
+txt to replace the part where it says name with the actual names that you see in invited_names.txt.
+
+38
+00:02:53,190 --> 00:02:58,200
+And then you're going to save each of those letters that you've generated inside the folder ReadyTo
+
+39
+00:02:58,200 --> 00:02:58,620
+Send.
+
+40
+00:02:59,310 --> 00:03:05,250
+And you can take a look at the example if you want to see what the final outcome looks like.
+
+41
+00:03:05,260 --> 00:03:10,030
+So it's going to be the name without any spaces afterwards, just a comma.
+
+42
+00:03:10,770 --> 00:03:14,850
+Now there's going to be a few things that will trip you up along the way.
+
+43
+00:03:15,000 --> 00:03:21,240
+And I'm hoping that you're going to use your knowledge about how to get help from Google and Stack overflow,
+
+44
+00:03:21,600 --> 00:03:24,690
+as well as some of these hints that I've left in here for you.
+
+45
+00:03:25,260 --> 00:03:32,520
+So the hints take you to three pages of Python documentation, and they're chosen because the methods
+
+46
+00:03:32,550 --> 00:03:36,200
+that are featured in them will definitely help you in this project.
+
+47
+00:03:36,450 --> 00:03:41,670
+In fact, some of the things that you're going to try to do won't be possible unless you take a look
+
+48
+00:03:41,670 --> 00:03:46,920
+at each of these pages of documentation, read through it, and understand what the methods do.
+
+49
+00:03:47,520 --> 00:03:53,490
+Now, as always, with a lot of tutorials, it's impossible to teach you every single method.
+
+50
+00:03:53,490 --> 00:03:58,800
+And it would be really, really tedious if I just went through all of the methods that are available in Python
+
+51
+00:03:59,070 --> 00:04:01,050
+and showed them to you individually.
+
+52
+00:04:01,530 --> 00:04:08,190
+So instead, you have to work just as a pro developer does which is to find out information when you
+
+53
+00:04:08,190 --> 00:04:14,940
+need it and to quickly understand what's happening and how to use the information you found on the fly.
+
+54
+00:04:15,480 --> 00:04:21,750
+Don't worry if you haven't seen me use these methods before. You will get more practice by using
+
+55
+00:04:21,750 --> 00:04:27,200
+the documentation, figuring things out yourself, and implementing things that you haven't seen before.
+
+56
+00:04:28,080 --> 00:04:35,490
+Once you're ready, go ahead and take a look at each of these links, see what each of the methods I've
+
+57
+00:04:35,490 --> 00:04:40,830
+linked to does, and then go ahead and try to tackle this challenge.
+
+58
+00:04:41,250 --> 00:04:44,100
+So pause the video and I'll see you on the other side.
+

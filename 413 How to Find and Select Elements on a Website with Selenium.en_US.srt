@@ -1,0 +1,688 @@
+1
+00:00:00,180 --> 00:00:05,040
+Now that we've seen how we can get started using selenium webdriver to automate
+
+2
+00:00:05,070 --> 00:00:09,330
+our browser, the next step is to figure out how to use selenium
+
+3
+00:00:09,360 --> 00:00:14,360
+to find and locate specific HTML elements on the webpage.
+
+4
+00:00:16,140 --> 00:00:21,140
+Just between where we quit our driver and where we get hold of a particular
+
+5
+00:00:21,380 --> 00:00:22,213
+page,
+
+6
+00:00:22,340 --> 00:00:27,340
+I'm going to show you how easy it is to complete the previous task in day 47
+
+7
+00:00:29,090 --> 00:00:33,650
+where we try to get hold of the price of a particular item on amazon.com.
+
+8
+00:00:34,940 --> 00:00:38,390
+This was the item that we were interested in. This was the instant pot
+
+9
+00:00:38,480 --> 00:00:40,160
+and this is the price.
+
+10
+00:00:40,430 --> 00:00:45,430
+So if I go ahead and take this URL and replace this previous
+
+11
+00:00:46,010 --> 00:00:50,750
+just amazon.com URL with the URL that takes us to this page,
+
+12
+00:00:51,050 --> 00:00:54,590
+then, we can start inspecting on this particular element.
+
+13
+00:00:55,310 --> 00:00:57,950
+So here we've got the price,
+
+14
+00:00:59,900 --> 00:01:04,900
+which is that inside a span with the id of priceblock_ourprice.
+
+15
+00:01:05,600 --> 00:01:07,310
+Now, if I use that,
+
+16
+00:01:07,340 --> 00:01:12,340
+then I can simply say driver.find_element_by_id
+
+17
+00:01:14,810 --> 00:01:18,530
+and then I can paste in the id that I found just now,
+
+18
+00:01:18,920 --> 00:01:23,420
+and this is going to be equal to the price element. Now,
+
+19
+00:01:23,420 --> 00:01:24,980
+if I want to get hold of the price,
+
+20
+00:01:25,010 --> 00:01:29,540
+all I have to do is to print that element.text.
+
+21
+00:01:30,110 --> 00:01:31,520
+And now if I hit run,
+
+22
+00:01:31,580 --> 00:01:36,580
+you'll see our browser open up briefly to the page with the Instant pot
+
+23
+00:01:36,680 --> 00:01:40,520
+and then it'll close down and you can see the price printed right here.
+
+24
+00:01:41,270 --> 00:01:41,900
+Now,
+
+25
+00:01:41,900 --> 00:01:46,900
+the reason why this is so much shorter than what you did in the last project is
+
+26
+00:01:47,240 --> 00:01:49,670
+because we're driving a browser.
+
+27
+00:01:49,700 --> 00:01:52,730
+So the browser is already sending all of those headers,
+
+28
+00:01:53,030 --> 00:01:58,030
+all of the information that Amazon would expect from a actual user instead of
+
+29
+00:01:59,600 --> 00:02:02,660
+using a get request using the request package.
+
+30
+00:02:03,260 --> 00:02:05,480
+So in only three lines,
+
+31
+00:02:05,570 --> 00:02:10,250
+we can do so much more than we could do with Beautiful Soup. Essentially,
+
+32
+00:02:10,250 --> 00:02:11,120
+if you think about it,
+
+33
+00:02:11,150 --> 00:02:16,150
+Beautiful Soup is really good for just grabbing and scraping pieces of data
+
+34
+00:02:16,790 --> 00:02:18,290
+from an HTML website.
+
+35
+00:02:18,740 --> 00:02:22,190
+But it gets stuck when that website is being rendered
+
+36
+00:02:22,190 --> 00:02:24,920
+using JavaScript or Angular or React
+
+37
+00:02:25,220 --> 00:02:30,220
+and the content that was HTML was taking time to load,
+
+38
+00:02:31,700 --> 00:02:35,540
+or it requires certain conditions to load.
+
+39
+00:02:36,140 --> 00:02:37,250
+Whereas in this case,
+
+40
+00:02:37,280 --> 00:02:42,200
+we're effectively doing exactly the same thing as we would as a human,
+
+41
+00:02:42,590 --> 00:02:44,570
+going to this particular URL,
+
+42
+00:02:44,630 --> 00:02:48,380
+and then looking at this element and its value.
+
+43
+00:02:49,760 --> 00:02:54,260
+I wanted to show you a couple of other ways that you could find elements because
+
+44
+00:02:54,260 --> 00:02:55,730
+as soon as I write driver.
+
+45
+00:02:55,760 --> 00:03:00,190
+find, you can see there's a whole bunch of ways of finding elements
+
+46
+00:03:00,250 --> 00:03:04,450
+and there's a lot more methods than you have with Beautiful Soup.
+
+47
+00:03:05,050 --> 00:03:08,920
+One that I want to show you that's quite useful is find_
+
+48
+00:03:08,950 --> 00:03:12,670
+_element_by_name. If we go to python.org,
+
+49
+00:03:13,060 --> 00:03:18,060
+you'll remember from your lessons on HTML and CSS that most forms,
+
+50
+00:03:18,700 --> 00:03:22,840
+these input forms, will have a name attribute.
+
+51
+00:03:23,140 --> 00:03:28,090
+So if I go ahead and inspect on this search bar, you can see its got an ID,
+
+52
+00:03:28,390 --> 00:03:31,600
+it's got a name, it's got a type, it's got a role, it's got a class.
+
+53
+00:03:31,600 --> 00:03:33,490
+It has got a whole bunch of attributes.
+
+54
+00:03:33,910 --> 00:03:37,660
+Now I'm going to search for it by this name, which is q.
+
+55
+00:03:38,350 --> 00:03:40,030
+And I can do that by saying
+
+56
+00:03:40,060 --> 00:03:44,200
+find_element_by_name and then specify the name as q.
+
+57
+00:03:44,860 --> 00:03:49,860
+Now of course I'll have to change this URL to actually python.org.
+
+58
+00:03:51,790 --> 00:03:55,810
+And now once we've found our element by name,
+
+59
+00:03:56,020 --> 00:03:57,820
+we'll call it the search_bar,
+
+60
+00:04:02,700 --> 00:04:03,450
+...
+
+61
+00:04:03,450 --> 00:04:06,960
+and then we'll go ahead and print out this search bar.
+
+62
+00:04:10,200 --> 00:04:11,033
+Right.
+
+63
+00:04:11,070 --> 00:04:13,800
+When selenium locates a particular element,
+
+64
+00:04:14,040 --> 00:04:17,040
+it won't actually print out the actual HTML.
+
+65
+00:04:17,400 --> 00:04:22,320
+It'll give it to you as a selenium element like this. Now,
+
+66
+00:04:22,350 --> 00:04:27,350
+if you want to tap into its various attributes or text or tag name,
+
+67
+00:04:28,260 --> 00:04:30,870
+then you'll actually have to do that using a dot.
+
+68
+00:04:31,530 --> 00:04:33,930
+So we can say search_bar.tag_name,
+
+69
+00:04:34,050 --> 00:04:38,130
+and it will give us that that is an input tag.
+
+70
+00:04:39,060 --> 00:04:42,480
+Or we could say search_bar.get_attribute
+
+71
+00:04:42,570 --> 00:04:47,430
+and we can specify the attribute that we want the value for. So for example,
+
+72
+00:04:47,430 --> 00:04:50,100
+if I wanted to know what the placeholder value was,
+
+73
+00:04:50,370 --> 00:04:54,000
+then all I have to do is put, get attribute placeholder,
+
+74
+00:04:54,060 --> 00:04:55,440
+and then we can print that out.
+
+75
+00:04:56,010 --> 00:04:58,920
+And it will tell us that placeholder says search.
+
+76
+00:04:59,850 --> 00:05:03,840
+So that is something that you'll find people commonly use with Selenium, find
+
+77
+00:05:03,840 --> 00:05:04,830
+element by name.
+
+78
+00:05:05,220 --> 00:05:10,220
+And it's really useful when it comes to filling in web forms because most forms
+
+79
+00:05:10,350 --> 00:05:14,760
+will have elements that are organized by name because when the form is
+
+80
+00:05:14,760 --> 00:05:15,593
+submitted,
+
+81
+00:05:15,660 --> 00:05:20,010
+that name is carried along with the value of the inputs.
+
+82
+00:05:20,730 --> 00:05:25,350
+In addition to find element by name, you'll also see the usual ones.
+
+83
+00:05:25,350 --> 00:05:28,320
+So find element by class name, for example.
+
+84
+00:05:28,980 --> 00:05:32,910
+So if we wanted to get hold of this logo here,
+
+85
+00:05:33,900 --> 00:05:37,380
+then it has a class of python-logo.
+
+86
+00:05:37,920 --> 00:05:40,470
+So all I have to add here is the name of the class
+
+87
+00:05:40,500 --> 00:05:42,930
+which is python-logo
+
+88
+00:05:43,530 --> 00:05:48,450
+and this will give me that logo element. Now from the logo element,
+
+89
+00:05:48,480 --> 00:05:51,930
+I can actually get hold of things even like it's size.
+
+90
+00:05:52,050 --> 00:05:54,840
+So let's go ahead and print out the size of the logo.
+
+91
+00:05:55,380 --> 00:05:56,213
+Right.
+
+92
+00:05:58,520 --> 00:06:02,030
+It has a height of 82 and a width of 290.
+
+93
+00:06:02,480 --> 00:06:06,860
+So you can see that we can do a lot more with selenium than we could with
+
+94
+00:06:06,890 --> 00:06:07,730
+beautiful soup.
+
+95
+00:06:09,410 --> 00:06:13,670
+So that's fine element by ID, by name, by class name,
+
+96
+00:06:14,690 --> 00:06:19,430
+but there's also of course find element by CSS selector.
+
+97
+00:06:20,030 --> 00:06:24,380
+And this is probably one of the easiest ways of narrowing down on a particular
+
+98
+00:06:24,380 --> 00:06:25,213
+element.
+
+99
+00:06:26,300 --> 00:06:29,720
+Let's say that I wanted to get hold of this link to the docs.
+
+100
+00:06:30,200 --> 00:06:33,890
+Let's go ahead and inspect it, and it lives inside an anchor tag.
+
+101
+00:06:34,220 --> 00:06:36,680
+But you can see that this anchor tag has no class,
+
+102
+00:06:36,710 --> 00:06:40,730
+it has no ID, has no easy way of identification.
+
+103
+00:06:41,180 --> 00:06:43,220
+So how do we get hold of it? Well,
+
+104
+00:06:43,220 --> 00:06:47,870
+we can see that it lives in a paragraph element and then going further up,
+
+105
+00:06:47,900 --> 00:06:51,230
+it's inside a div with this particular class.
+
+106
+00:06:51,710 --> 00:06:55,130
+So this has a class of documentation-widget.
+
+107
+00:06:55,460 --> 00:06:59,540
+So that's pretty specific. So if we wanted to get hold of that anchor tag,
+
+108
+00:06:59,570 --> 00:07:04,430
+we could just say, well, inside this div of documentation-widget,
+
+109
+00:07:04,790 --> 00:07:07,250
+let's go ahead and find any anchor tags.
+
+110
+00:07:08,210 --> 00:07:11,060
+And to express that as a CSS selector,
+
+111
+00:07:11,060 --> 00:07:13,970
+we would specify the class documentation-widget,
+
+112
+00:07:14,330 --> 00:07:18,410
+and then inside the element with that class, we're looking for an anchor tag.
+
+113
+00:07:18,890 --> 00:07:22,670
+So this would get us our documentation link.
+
+114
+00:07:24,290 --> 00:07:29,290
+And now if I go ahead and print the documentation_link.text,
+
+115
+00:07:29,810 --> 00:07:34,810
+you can see that it's actually getting hold of this particular link.
+
+116
+00:07:36,290 --> 00:07:37,040
+And this is done
+
+117
+00:07:37,040 --> 00:07:42,040
+even though the actual link doesn't have any easily identifiable name or class
+
+118
+00:07:43,040 --> 00:07:46,670
+or ID. Now on a similar vein
+
+119
+00:07:46,790 --> 00:07:51,790
+sometimes it's extremely hard to even find an element even by CSS selector.
+
+120
+00:07:52,790 --> 00:07:57,590
+So if all else fails, one that will always work as the XPath.
+
+121
+00:07:58,190 --> 00:08:03,190
+The XPath is a way of locating a specific HTML element by a path structure.
+
+122
+00:08:06,200 --> 00:08:09,050
+So you've seen what paths look like right?
+
+123
+00:08:09,050 --> 00:08:12,320
+Users/angela/Development, et cetera. Well,
+
+124
+00:08:12,320 --> 00:08:17,320
+we can also express the navigation to a particular element drilling down from
+
+125
+00:08:18,800 --> 00:08:23,450
+the top of the tree to a particular node using the XPath.
+
+126
+00:08:24,020 --> 00:08:28,340
+Let's say I wanted to get hold of this link at the bottom, submit website bug.
+
+127
+00:08:28,890 --> 00:08:30,410
+Let's go ahead and inspect on it.
+
+128
+00:08:30,710 --> 00:08:35,710
+And you can see it's not particularly unique in terms of having an ID or a class
+
+129
+00:08:37,040 --> 00:08:40,790
+or a name. And even in terms of its structure,
+
+130
+00:08:40,820 --> 00:08:45,820
+it's sort of in this ul and then an li and it might not be that easy to get
+
+131
+00:08:47,030 --> 00:08:50,540
+to it. But here's where our XPath comes in handy.
+
+132
+00:08:50,960 --> 00:08:55,680
+Let's go ahead and right click on it and then go to copy, copy XPath.
+
+133
+00:08:56,310 --> 00:09:01,310
+And now we can go back to our code and use it to tap into that element.
+
+134
+00:09:02,310 --> 00:09:07,110
+So we'll say driver, and then we'll say, find_element_by_xpath.
+
+135
+00:09:07,530 --> 00:09:10,740
+And then inside here, we're going to paste our XPath.
+
+136
+00:09:11,250 --> 00:09:15,720
+Now notice that the XPath itself actually has some double quotes.
+
+137
+00:09:16,050 --> 00:09:17,580
+So we have the change
+
+138
+00:09:17,610 --> 00:09:22,470
+our double quotes into a single quotes so that it doesn't clash with the
+
+139
+00:09:22,500 --> 00:09:24,900
+inner double quotes. So like this.
+
+140
+00:09:25,410 --> 00:09:27,930
+Now once we found our bug link,
+
+141
+00:09:28,410 --> 00:09:33,410
+then we're going to print out the link and I'm going to get hold of the href
+
+142
+00:09:35,730 --> 00:09:36,563
+here.
+
+143
+00:09:37,170 --> 00:09:42,170
+So now I'm going to print my bug_link.txt just to prove that this worked.
+
+144
+00:09:42,780 --> 00:09:43,890
+And if I hit run,
+
+145
+00:09:44,190 --> 00:09:49,110
+you can see it opens up our browser and you can see it's managed to get hold of
+
+146
+00:09:49,110 --> 00:09:53,490
+that particular link using this very specific XPath
+
+147
+00:09:53,820 --> 00:09:58,140
+which looks very much like a file path that we've been using.
+
+148
+00:09:58,650 --> 00:10:03,650
+But it's essentially the way that we would navigate down through the divs,
+
+149
+00:10:03,720 --> 00:10:05,100
+the uls, the lis,
+
+150
+00:10:05,220 --> 00:10:10,220
+all the way down to that particular anchor tag. And the best part of all is of
+
+151
+00:10:11,400 --> 00:10:11,640
+course,
+
+152
+00:10:11,640 --> 00:10:16,500
+you can use this button here in Chrome to locate any element.
+
+153
+00:10:16,830 --> 00:10:19,620
+And then that would select its location in the code
+
+154
+00:10:19,980 --> 00:10:24,980
+and then you can right-click and then copy it XPath to get hold of that
+
+155
+00:10:25,050 --> 00:10:26,040
+particular thing.
+
+156
+00:10:27,570 --> 00:10:32,570
+Now I'm going to link to the documentation on XPath from w3schools.
+
+157
+00:10:33,090 --> 00:10:37,710
+It goes into a little bit more detail about how XPaths are constructed,
+
+158
+00:10:38,040 --> 00:10:41,940
+but you don't need to know this in order to work with them. As I've shown,
+
+159
+00:10:41,940 --> 00:10:46,830
+you can simply use the Chrome developer tools and it will help you get to the
+
+160
+00:10:46,860 --> 00:10:49,050
+particular item you're interested in.
+
+161
+00:10:51,030 --> 00:10:55,680
+Now we've been looking at finding elements using selenium,
+
+162
+00:10:56,100 --> 00:11:01,100
+but notice how we've always stuck to the singular version of that method,
+
+163
+00:11:01,140 --> 00:11:06,140
+find element. Now for every single method that I've shown you,
+
+164
+00:11:06,210 --> 00:11:10,800
+there's also a counterpart, which is the find elements.
+
+165
+00:11:10,980 --> 00:11:15,540
+So, for example, find_elements_by_css_selector. And of course,
+
+166
+00:11:15,570 --> 00:11:19,200
+this is just going to find you everything on the screen that matches your
+
+167
+00:11:19,200 --> 00:11:21,690
+criteria and give it to you in a list.
+
+168
+00:11:22,140 --> 00:11:27,140
+And there is a version of this for every single find method that we've shown
+
+169
+00:11:27,690 --> 00:11:30,270
+so far. In the next lesson
+
+170
+00:11:30,330 --> 00:11:35,250
+I've got a quick challenge for you to put into practice what you've learned and
+
+171
+00:11:35,250 --> 00:11:39,180
+to be able to locate any given elements on a webpage. So
+
+172
+00:11:39,870 --> 00:11:42,630
+for all of that and more I'll see you on the next lesson.
+

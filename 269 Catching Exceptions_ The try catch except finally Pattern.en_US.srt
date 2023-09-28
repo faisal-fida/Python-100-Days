@@ -1,0 +1,928 @@
+1
+00:00:00,390 --> 00:00:03,780
+In this lesson, we're going to talk about errors and exceptions.
+
+2
+00:00:04,170 --> 00:00:06,810
+I'll show you what happens when a program encounters
+
+3
+00:00:06,840 --> 00:00:10,980
+different types of errors and how you can write code to handle these situations.
+
+4
+00:00:12,060 --> 00:00:15,810
+To begin, I've created a brand new project called day-30
+
+5
+00:00:16,020 --> 00:00:20,760
+and I've created my main.py file. Now notice how inside my project,
+
+6
+00:00:20,790 --> 00:00:24,990
+there is only one code file at the moment. There is no data files,
+
+7
+00:00:24,990 --> 00:00:28,140
+no text files, nothing. In this situation
+
+8
+00:00:28,170 --> 00:00:33,170
+if I was to try and open up a particular file that doesn't exist and I tried to
+
+9
+00:00:33,330 --> 00:00:35,100
+read it, what do you think would happen?
+
+10
+00:00:35,670 --> 00:00:38,610
+So we're going to use our normal syntax with open,
+
+11
+00:00:38,910 --> 00:00:42,480
+and let's just make up a file name. So a_file.txt.
+
+12
+00:00:42,990 --> 00:00:45,360
+And I'm going to save that as file
+
+13
+00:00:45,630 --> 00:00:50,630
+and I'm going to take this file and try to read from it. Right now
+
+14
+00:00:51,120 --> 00:00:55,710
+if I run this code, then this is what happens.
+
+15
+00:00:56,100 --> 00:00:59,520
+I get a trace back and I get a error
+
+16
+00:00:59,550 --> 00:01:03,570
+which is the file not found error, which kind of makes sense
+
+17
+00:01:03,570 --> 00:01:08,570
+given that there really is no such file existing inside our folder where we're
+
+18
+00:01:08,820 --> 00:01:11,520
+telling it to search. That's not great.
+
+19
+00:01:11,820 --> 00:01:15,900
+And if this happens somewhere within our actual program, so here
+
+20
+00:01:15,900 --> 00:01:20,100
+I've got the password manager completed project from yesterday.
+
+21
+00:01:20,640 --> 00:01:24,840
+If in this case, I made a typo in this word
+
+22
+00:01:24,870 --> 00:01:29,190
+so instead of data.txt, I wrote daata.txt.
+
+23
+00:01:29,850 --> 00:01:34,170
+And instead of the append mode, I had the read mode. Well,
+
+24
+00:01:34,170 --> 00:01:37,500
+in this case, what would happen is exactly the same thing.
+
+25
+00:01:37,500 --> 00:01:40,530
+So I could have a website, have a password,
+
+26
+00:01:40,680 --> 00:01:44,400
+but as soon as I hit add, then we get our file
+
+27
+00:01:44,400 --> 00:01:48,510
+not found error. And notice how as soon as that error happens,
+
+28
+00:01:48,840 --> 00:01:52,620
+it actually doesn't continue because on the next few lines,
+
+29
+00:01:52,650 --> 00:01:54,480
+we've actually got these two lines of code
+
+30
+00:01:54,780 --> 00:01:59,490
+which deletes the entry inside the website entry and also the password entry.
+
+31
+00:01:59,610 --> 00:02:04,200
+But those lines of code are not being carried out because it's hit a stumbling
+
+32
+00:02:04,200 --> 00:02:04,830
+block.
+
+33
+00:02:04,830 --> 00:02:09,390
+It has not found the file that we're trying to open and we're trying to read.
+
+34
+00:02:10,080 --> 00:02:12,630
+So I'm going to restore the code to how it was previously,
+
+35
+00:02:12,990 --> 00:02:16,950
+but this is a good point to start thinking about errors because we've come
+
+36
+00:02:16,950 --> 00:02:21,450
+across a lot of errors, right? Including errors like key error.
+
+37
+00:02:22,710 --> 00:02:23,730
+So for example,
+
+38
+00:02:23,730 --> 00:02:28,730
+if we have a dictionary that has just one key-value pair and we somehow try to
+
+39
+00:02:29,280 --> 00:02:31,620
+get a value from that dictionary
+
+40
+00:02:31,860 --> 00:02:34,830
+by tapping into a key that doesn't exist,
+
+41
+00:02:36,660 --> 00:02:40,890
+then when we run this code, we will get a key error, right?
+
+42
+00:02:41,070 --> 00:02:45,600
+It can't actually pick out the value from this dictionary because this key that
+
+43
+00:02:45,600 --> 00:02:49,740
+we provided does not exist in that dictionary. Now,
+
+44
+00:02:49,770 --> 00:02:53,550
+some of the other popular ones that you've seen are the index error.
+
+45
+00:02:54,690 --> 00:02:55,620
+So in this case
+
+46
+00:02:55,620 --> 00:03:00,620
+we have a list and we basically are trying to get hold of an item from this list
+
+47
+00:03:02,230 --> 00:03:06,880
+at an index that doesn't exist. So remember the index starts at 0, 1,
+
+48
+00:03:06,880 --> 00:03:11,110
+2, and 3. There is nothing at 3. So again, when I run this,
+
+49
+00:03:11,170 --> 00:03:14,110
+we get an error and this is an index error.
+
+50
+00:03:15,700 --> 00:03:20,200
+And the final error that we've probably been used to seeing is the type error
+
+51
+00:03:20,500 --> 00:03:23,800
+where we're trying to do something with a particular piece of data,
+
+52
+00:03:24,130 --> 00:03:27,550
+but we cannot do that thing with a particular data type.
+
+53
+00:03:28,150 --> 00:03:30,580
+Let's say we have a piece of text abc
+
+54
+00:03:30,760 --> 00:03:35,550
+and we try to print it this text plus the number five,
+
+55
+00:03:35,760 --> 00:03:39,870
+so a string plus an integer. And again,
+
+56
+00:03:39,870 --> 00:03:42,300
+when I hit run it, again we get a type error.
+
+57
+00:03:43,110 --> 00:03:47,250
+All of these types of errors we've actually come across already and
+
+58
+00:03:47,310 --> 00:03:48,600
+all that we've done so far is
+
+59
+00:03:48,960 --> 00:03:53,460
+we've just used it as an indicator to tell us, wait a minute,
+
+60
+00:03:53,460 --> 00:03:56,640
+something's not quite right. We got to go and fix our code.
+
+61
+00:03:57,270 --> 00:03:59,760
+But life doesn't really work out
+
+62
+00:03:59,760 --> 00:04:04,680
+so neatly most of the time. In a lot of cases, it actually follows Morphy's law
+
+63
+00:04:04,980 --> 00:04:09,300
+which states that anything that can go wrong probably will, eventually at some
+
+64
+00:04:09,300 --> 00:04:10,410
+point, go wrong.
+
+65
+00:04:10,800 --> 00:04:15,210
+So we have to plan for these eventualities just as, you know,
+
+66
+00:04:15,210 --> 00:04:17,280
+your car is probably not going to break down,
+
+67
+00:04:17,550 --> 00:04:22,550
+but you need breakdown cover just in case that it does happen. In programming
+
+68
+00:04:23,310 --> 00:04:28,310
+what we can do is we can catch these exceptions. When something goes wrong
+
+69
+00:04:28,410 --> 00:04:31,710
+and in that moment we catch that exception,
+
+70
+00:04:31,980 --> 00:04:34,380
+then it doesn't have to fail catastrophically.
+
+71
+00:04:34,890 --> 00:04:39,690
+We can actually fail more gracefully or we can decide that something else should
+
+72
+00:04:39,690 --> 00:04:40,523
+happen.
+
+73
+00:04:40,800 --> 00:04:45,060
+Here's what the code looks like when we're dealing with these exceptions.
+
+74
+00:04:45,360 --> 00:04:48,120
+We have try, except, else and finally.
+
+75
+00:04:48,120 --> 00:04:52,680
+These are the four keywords that are really important when it comes to handling
+
+76
+00:04:52,680 --> 00:04:53,513
+exceptions.
+
+77
+00:04:54,000 --> 00:04:59,000
+Now the first keyword try comes for a block of code where you're executing
+
+78
+00:05:00,510 --> 00:05:03,210
+something that might cause an exception.
+
+79
+00:05:03,570 --> 00:05:07,590
+So basically you're trying to execute a piece of line. In most cases,
+
+80
+00:05:07,590 --> 00:05:10,980
+it probably will work, but sometimes it just might not.
+
+81
+00:05:11,760 --> 00:05:15,060
+Now the next step is to define the except block.
+
+82
+00:05:15,510 --> 00:05:19,170
+So this is the block of code that you want the computer to execute
+
+83
+00:05:19,440 --> 00:05:21,060
+if there were more was an exception.
+
+84
+00:05:21,090 --> 00:05:25,860
+If something went catastrophically wrong and it was not the way that you
+
+85
+00:05:25,860 --> 00:05:29,730
+expected it to go, then carry out this piece of code.
+
+86
+00:05:30,780 --> 00:05:35,130
+Now the else keyword allows you to find some code to execute
+
+87
+00:05:35,400 --> 00:05:39,720
+if there were no exceptions. If you tried this thing that might fail
+
+88
+00:05:39,930 --> 00:05:43,560
+but actually it didn't fail. You succeeded and there were no problems.
+
+89
+00:05:43,800 --> 00:05:47,430
+Well then, in this case, you're going to do whatever is inside the else block.
+
+90
+00:05:47,970 --> 00:05:50,520
+And then finally, we have the finally keyword
+
+91
+00:05:50,850 --> 00:05:55,020
+which basically is just the block of code to carry out
+
+92
+00:05:55,230 --> 00:05:59,870
+no matter what happens. If this thing that you tried failed
+
+93
+00:05:59,900 --> 00:06:04,880
+or if it succeeded, Honeybadger, I mean, finally doesn't actually care.
+
+94
+00:06:05,630 --> 00:06:08,870
+So no matter what happens with trying this line of code,
+
+95
+00:06:09,140 --> 00:06:12,470
+this finally block is always going to be executed
+
+96
+00:06:12,770 --> 00:06:17,750
+and it's usually used for cleaning things up or tidying things up at the end of
+
+97
+00:06:17,960 --> 00:06:22,520
+some sort of code execution. Let's take our file not found exception
+
+98
+00:06:22,610 --> 00:06:27,260
+and let's see how we can make this a lot safer by catching that exception.
+
+99
+00:06:27,710 --> 00:06:32,710
+The thing that we're going to try is to open up this file. Instead of using the
+
+100
+00:06:33,290 --> 00:06:34,370
+with format,
+
+101
+00:06:34,400 --> 00:06:39,400
+I'm actually just gonna straight up create a file and set it to open this
+
+102
+00:06:39,500 --> 00:06:42,470
+particular file path. So a_file.txt.
+
+103
+00:06:43,010 --> 00:06:48,010
+Now this is the line of code that can cause an error and it will cause an error
+
+104
+00:06:48,530 --> 00:06:52,700
+in our case because we don't have a file called a_file.txt.
+
+105
+00:06:53,270 --> 00:06:57,620
+So this line of code is going to go inside a try block.
+
+106
+00:06:58,040 --> 00:07:02,840
+So let's indent that. So this is the line of code that we're going to try. Now,
+
+107
+00:07:02,840 --> 00:07:07,340
+the next thing we'll define is the except block. Basically,
+
+108
+00:07:07,340 --> 00:07:10,220
+once we've tried running this line of code,
+
+109
+00:07:10,610 --> 00:07:15,610
+and if there was an exception that was thrown when we were running it like the
+
+110
+00:07:15,710 --> 00:07:19,340
+type error or in this case, it would be a file not found error,
+
+111
+00:07:19,580 --> 00:07:22,310
+well then, in that case, we're going to do something different.
+
+112
+00:07:22,310 --> 00:07:26,210
+We're going to let's say print, there was an error.
+
+113
+00:07:27,530 --> 00:07:31,190
+So now let's run this code and you can see straight away,
+
+114
+00:07:31,220 --> 00:07:34,430
+there was an error because this file doesn't exist.
+
+115
+00:07:34,460 --> 00:07:38,810
+So this failed and therefore this line of code was executed.
+
+116
+00:07:39,200 --> 00:07:42,680
+It's almost a little bit like we have an if statement and the
+
+117
+00:07:42,680 --> 00:07:47,030
+if statement is checking to see if something fails, well,
+
+118
+00:07:47,030 --> 00:07:50,900
+in that case, this is where it looks to see what it should do next.
+
+119
+00:07:51,500 --> 00:07:55,310
+Now just printing there was an error is kind of pointless.
+
+120
+00:07:55,520 --> 00:08:00,520
+What we actually want to do is to make sure that we don't actually fail so that
+
+121
+00:08:01,220 --> 00:08:05,690
+whatever happens, we succeed. So if there is a good alternative,
+
+122
+00:08:05,750 --> 00:08:08,930
+then that's what we're going to put inside the except block.
+
+123
+00:08:09,530 --> 00:08:11,240
+What we're going to do instead
+
+124
+00:08:11,420 --> 00:08:15,830
+if this file doesn't exist and we can't open it is we're just simply going to
+
+125
+00:08:15,830 --> 00:08:18,440
+create it. To create a new file,
+
+126
+00:08:18,650 --> 00:08:21,140
+remember that you can open up the file
+
+127
+00:08:23,810 --> 00:08:28,810
+and you can open it using the write mode because when you're inside write mode,
+
+128
+00:08:29,900 --> 00:08:33,920
+then what this open method is going to do is it's going to try and find this
+
+129
+00:08:33,920 --> 00:08:36,380
+file and open it. But if it doesn't exist,
+
+130
+00:08:36,410 --> 00:08:41,090
+it's just going to create it. Right now if I run this code again,
+
+131
+00:08:41,120 --> 00:08:46,040
+I want you to watch inside the day-30 folder because as soon as I hit run,
+
+132
+00:08:46,250 --> 00:08:51,250
+you'll notice that a_file.txt gets created because we tried opening it.
+
+133
+00:08:51,650 --> 00:08:52,670
+It didn't exist.
+
+134
+00:08:52,940 --> 00:08:57,940
+So it went into the except block and it actually just went ahead and created this
+
+135
+00:08:58,050 --> 00:08:59,490
+file from scratch.
+
+136
+00:08:59,820 --> 00:09:03,900
+Now this file is of course completely empty because we haven't told it to do
+
+137
+00:09:03,900 --> 00:09:08,520
+anything, but we could, in fact, get our file and write something to it.
+
+138
+00:09:09,600 --> 00:09:14,460
+We can put all of that inside the except block if we want to. Now,
+
+139
+00:09:14,460 --> 00:09:19,460
+one of the things that's giving us a warning here with the except keyword is if
+
+140
+00:09:19,560 --> 00:09:23,910
+you hover over it, it tells you that this is too broad an exception clause.
+
+141
+00:09:24,360 --> 00:09:27,270
+And according to the PEP 8 recommendations,
+
+142
+00:09:27,540 --> 00:09:30,510
+it tells us you should never use a bare except
+
+143
+00:09:30,960 --> 00:09:34,320
+and the reason for this is because when you have an except  clause,
+
+144
+00:09:34,680 --> 00:09:38,580
+then it's actually going to ignore all errors. For example,
+
+145
+00:09:38,670 --> 00:09:39,870
+if inside here
+
+146
+00:09:40,020 --> 00:09:43,740
+let's say I decided to do something that was also going to create an error,
+
+147
+00:09:43,770 --> 00:09:45,480
+but not the same kind of error.
+
+148
+00:09:46,110 --> 00:09:50,490
+So now I have a dictionary with a key and a value,
+
+149
+00:09:50,850 --> 00:09:55,170
+but let's say I tried to print some sort of value from that dictionary
+
+150
+00:09:55,590 --> 00:09:58,440
+and I use a non-existent key.
+
+151
+00:09:58,890 --> 00:10:03,360
+So you can see that this dictionary does not have a key that is named this
+
+152
+00:10:03,660 --> 00:10:07,410
+so this line is going to actually give us a key error.
+
+153
+00:10:07,740 --> 00:10:10,830
+But now, notice what happens when I hit run.
+
+154
+00:10:11,700 --> 00:10:14,460
+Absolutely nothing. I don't get any errors.
+
+155
+00:10:14,670 --> 00:10:17,820
+And the reason for this is because inside the try block
+
+156
+00:10:18,150 --> 00:10:23,150
+it's first trying to open up this file and indeed that file exists.
+
+157
+00:10:23,550 --> 00:10:28,020
+So it moves on to the next line. It creates a dictionary called a_dictionary
+
+158
+00:10:28,080 --> 00:10:32,430
+and that it tries to get hold of this value with this key
+
+159
+00:10:32,430 --> 00:10:33,390
+from that dictionary.
+
+160
+00:10:33,810 --> 00:10:37,500
+Now this line actually fails and creates an exception,
+
+161
+00:10:37,830 --> 00:10:40,500
+but that exception is caught right here
+
+162
+00:10:40,920 --> 00:10:45,360
+and it simply tells it to go ahead and create a file called a_file.txt
+
+163
+00:10:45,630 --> 00:10:50,130
+which it will go ahead and do. So this is not what we want at all.
+
+164
+00:10:50,910 --> 00:10:51,660
+Instead,
+
+165
+00:10:51,660 --> 00:10:56,130
+we want our exception to catch a specific situation.
+
+166
+00:10:56,460 --> 00:11:01,460
+We want to say that in the exception that we have a file not found error,
+
+167
+00:11:01,950 --> 00:11:06,300
+then this is what we want to do. And now if I run the code again,
+
+168
+00:11:06,360 --> 00:11:08,850
+you can see when now getting that key error
+
+169
+00:11:08,910 --> 00:11:13,560
+and it's telling us that this thing worked, so it didn't generate a file
+
+170
+00:11:13,560 --> 00:11:14,430
+not found error.
+
+171
+00:11:14,730 --> 00:11:18,240
+But the next thing that it tried when it tried to print this value,
+
+172
+00:11:18,390 --> 00:11:19,770
+it got a key error.
+
+173
+00:11:21,150 --> 00:11:26,150
+So we can actually have multiple exceptions. Instead of just except file
+
+174
+00:11:26,670 --> 00:11:30,960
+not found I can also say except key error and in this case,
+
+175
+00:11:30,960 --> 00:11:35,850
+I'm just going to print that key does not exist. Now, if I hit run,
+
+176
+00:11:36,150 --> 00:11:39,810
+I get no errors, but I do catch that exception
+
+177
+00:11:40,170 --> 00:11:45,170
+and I have this print statement executing. In addition to simply catching an
+
+178
+00:11:46,770 --> 00:11:48,060
+exception using
+
+179
+00:11:48,060 --> 00:11:52,860
+except, you can also get hold of the error message that would have normally
+
+180
+00:11:52,870 --> 00:11:56,290
+printed had we not had the exception called.
+
+181
+00:11:56,650 --> 00:12:00,910
+Normally, you would get key error and it would give you a message that tells you
+
+182
+00:12:00,910 --> 00:12:02,500
+which key was the problem.
+
+183
+00:12:03,130 --> 00:12:07,810
+If we catch our exception and we still want to get hold of that error message,
+
+184
+00:12:08,110 --> 00:12:08,943
+then we can say
+
+185
+00:12:08,950 --> 00:12:13,150
+except key error as error message.
+
+186
+00:12:13,660 --> 00:12:18,490
+And this means we can get hold of the error message that was generated from this
+
+187
+00:12:18,490 --> 00:12:23,050
+exception if it does occur. Instead of saying that key does not exist,
+
+188
+00:12:23,110 --> 00:12:28,110
+we can now take this as an f-string and we can say, the key, and we pass in the
+
+189
+00:12:29,590 --> 00:12:30,820
+error message right here.
+
+190
+00:12:31,270 --> 00:12:36,270
+So now I hit run again and it tells me the key 'sdfsdf' does not exist,
+
+191
+00:12:37,300 --> 00:12:41,200
+which is a lot more useful than simply saying the key does not exist.
+
+192
+00:12:41,950 --> 00:12:46,930
+So you can try, you can catch exceptions, you can catch other exceptions,
+
+193
+00:12:47,230 --> 00:12:51,370
+you can also get hold of the error message and use it when you catch the
+
+194
+00:12:51,370 --> 00:12:56,050
+exception. Now, the next keyword we mentioned was the else keyword
+
+195
+00:12:56,620 --> 00:13:01,620
+and this block of code is going to execute when the thing that you're trying all
+
+196
+00:13:01,840 --> 00:13:05,830
+succeeds. So if it managed to open up the file,
+
+197
+00:13:05,830 --> 00:13:08,710
+it managed to print this item from the dictionary
+
+198
+00:13:08,980 --> 00:13:13,150
+and there were no exceptions that were thrown from this block of code,
+
+199
+00:13:13,210 --> 00:13:17,440
+then it's going to jump to the else block. So what else do you want to do?
+
+200
+00:13:18,100 --> 00:13:21,940
+Well, maybe I actually want to read from this file,
+
+201
+00:13:22,000 --> 00:13:23,860
+so file.read,
+
+202
+00:13:24,310 --> 00:13:27,130
+and we save this as our content.
+
+203
+00:13:27,850 --> 00:13:31,930
+And then we go ahead and print our content. Now,
+
+204
+00:13:31,960 --> 00:13:34,960
+remember, if this file doesn't actually exist,
+
+205
+00:13:35,080 --> 00:13:37,630
+this else block is never going to be triggered.
+
+206
+00:13:37,990 --> 00:13:40,780
+So if I go ahead and simply delete this file
+
+207
+00:13:43,630 --> 00:13:44,830
+and I hit run,
+
+208
+00:13:45,190 --> 00:13:50,190
+you can see that this else block does not occur because it tried to do this,
+
+209
+00:13:50,980 --> 00:13:51,940
+it failed
+
+210
+00:13:52,300 --> 00:13:57,300
+and so it ended up jumping into the except block and it generated that file.
+
+211
+00:13:58,570 --> 00:14:02,530
+But now that that file has been created, the next time I hit run,
+
+212
+00:14:02,800 --> 00:14:07,800
+then this line of code is going to succeed and now it catches the next error in
+
+213
+00:14:08,560 --> 00:14:12,700
+that try block. So if I change this to a key
+
+214
+00:14:12,700 --> 00:14:17,560
+that it actually will recognize, then that next line also succeeds
+
+215
+00:14:17,920 --> 00:14:22,920
+and finally it gets to this block and it actually prints out the thing that's
+
+216
+00:14:23,500 --> 00:14:27,250
+inside a_file.txt which is just the word something.
+
+217
+00:14:28,120 --> 00:14:31,510
+So we've now got try, except, else,
+
+218
+00:14:31,870 --> 00:14:35,950
+and the last thing I want to show you is the keyword finally.
+
+219
+00:14:36,460 --> 00:14:41,460
+So this finally is basically some code that's gonna run no matter what happens.
+
+220
+00:14:41,980 --> 00:14:42,813
+And in our case,
+
+221
+00:14:42,820 --> 00:14:47,800
+the most appropriate thing to do here is actually to close down the file because
+
+222
+00:14:47,800 --> 00:14:49,450
+we're not using the with keyword
+
+223
+00:14:49,750 --> 00:14:54,750
+so our file would actually stay open if we actually had an exception. And I'm
+
+224
+00:14:56,000 --> 00:14:57,650
+going to go ahead and print
+
+225
+00:14:57,970 --> 00:14:59,890
+File was closed.
+
+226
+00:15:00,790 --> 00:15:04,780
+Now our code basically will open up this file
+
+227
+00:15:05,170 --> 00:15:08,890
+and no matter if it succeeded or if it failed,
+
+228
+00:15:09,220 --> 00:15:14,220
+it's going to close down that file so that we don't end up with an open file
+
+229
+00:15:14,530 --> 00:15:18,400
+that we're not doing anything with. So finally is not often used,
+
+230
+00:15:18,730 --> 00:15:22,750
+but sometimes it can be useful when you want some code to execute
+
+231
+00:15:22,990 --> 00:15:27,990
+no matter if the code you are trying is succeeded or failed. In the next lesson,
+
+232
+00:15:29,440 --> 00:15:32,170
+I'll show you how you can raise your own exceptions.
+

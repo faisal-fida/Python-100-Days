@@ -1,0 +1,1016 @@
+1
+00:00:00,630 --> 00:00:04,770
+Now I hope you've given this project a good go because I'm going to now go
+
+2
+00:00:04,770 --> 00:00:08,910
+through the solution for the normal starting project. Now,
+
+3
+00:00:08,940 --> 00:00:13,770
+the important thing to stress here is that if you used one of the hard starting 
+
+4
+00:00:13,770 --> 00:00:16,140
+project or the extra hard starting project,
+
+5
+00:00:16,500 --> 00:00:20,850
+you might have ended up with a different method of doing the same thing.
+
+6
+00:00:21,450 --> 00:00:24,360
+And often I get students asking me,
+
+7
+00:00:24,360 --> 00:00:26,520
+what is the right way of doing things?
+
+8
+00:00:26,820 --> 00:00:31,050
+And this is not really the thing that you should focus on. Instead,
+
+9
+00:00:31,160 --> 00:00:33,950
+use your creativity, you use your skills
+
+10
+00:00:34,430 --> 00:00:38,090
+and make sure that your program does what you want it to.
+
+11
+00:00:38,510 --> 00:00:40,760
+There is no real right answer.
+
+12
+00:00:40,880 --> 00:00:45,880
+It really depends on your preferences or even what it is that you know how to
+
+13
+00:00:45,890 --> 00:00:46,670
+do.
+
+14
+00:00:46,670 --> 00:00:51,500
+If you can get this project to work using just your own skills and a bit of
+
+15
+00:00:51,500 --> 00:00:55,550
+Googling, a bit of Stack Overflow, as long as you managed to get it to work,
+
+16
+00:00:55,580 --> 00:01:00,200
+it's way more important than what is the right way of doing things.
+
+17
+00:01:00,680 --> 00:01:04,130
+So all of that, I'm trying to say that I'm going to go through the solution,
+
+18
+00:01:04,370 --> 00:01:08,870
+but don't view this as the ultimate solution. And if you did it a different way,
+
+19
+00:01:08,900 --> 00:01:13,850
+that's totally fine as long as it works. Alright, let's get started. So here,
+
+20
+00:01:13,850 --> 00:01:17,420
+I've got these starting files for the normal starting project,
+
+21
+00:01:17,960 --> 00:01:22,340
+and I'm going to go through each of the lines line by line to create our final
+
+22
+00:01:22,400 --> 00:01:23,750
+birthday wisher project.
+
+23
+00:01:24,320 --> 00:01:28,610
+The first thing the instruction tells us to do is to go into this birthdays
+
+24
+00:01:28,610 --> 00:01:33,610
+.csv and update this with some birthdays of our friends and family.
+
+25
+00:01:34,670 --> 00:01:37,100
+So I'm going to replace all the data that's currently in here,
+
+26
+00:01:37,550 --> 00:01:41,660
+and I'm going to add some data of my own. Now,
+
+27
+00:01:41,720 --> 00:01:45,980
+the thing that we have to do in order to test this code is to make sure that one
+
+28
+00:01:45,980 --> 00:01:50,390
+of these rows of data actually matches an email that we can access
+
+29
+00:01:50,780 --> 00:01:53,330
+and also today's month and day.
+
+30
+00:01:53,840 --> 00:01:56,090
+So today is July 14th
+
+31
+00:01:56,120 --> 00:02:00,140
+so I'm going to update those two numbers and the year doesn't matter so much in
+
+32
+00:02:00,140 --> 00:02:02,480
+this case. Once I've done that,
+
+33
+00:02:02,480 --> 00:02:07,340
+I'm going to hit save, command + s or just go to file and go to save all.
+
+34
+00:02:08,270 --> 00:02:13,270
+And you can also see the shortcut for your particular operating system there as
+
+35
+00:02:13,310 --> 00:02:16,490
+well. Now, inside my main.py,
+
+36
+00:02:16,490 --> 00:02:20,300
+I've now completed this step. So I'm going to go ahead and delete it.
+
+37
+00:02:22,220 --> 00:02:24,080
+Now, step 2 is the hardest.
+
+38
+00:02:24,410 --> 00:02:29,410
+And here we have to check if today's date matches a birthday in the birthday
+
+39
+00:02:30,170 --> 00:02:31,003
+CSV.
+
+40
+00:02:31,400 --> 00:02:35,540
+The first thing I'm going to do is I'm going to import datetime
+
+41
+00:02:35,990 --> 00:02:39,830
+because that's going to be crucial for me to be able to figure out what today's
+
+42
+00:02:39,830 --> 00:02:43,880
+date actually is. And in fact, that is what hint one says.
+
+43
+00:02:44,300 --> 00:02:48,530
+It says to create a tuple from today's month and day using the datetime
+
+44
+00:02:48,530 --> 00:02:51,200
+module. This is essentially what we want to create.
+
+45
+00:02:51,440 --> 00:02:53,840
+So how do we get hold of today's month? Well,
+
+46
+00:02:53,870 --> 00:02:57,650
+we can use the datetime module and then the datetime class,
+
+47
+00:02:57,710 --> 00:03:02,710
+and then we can call now and we can get hold of the month like this.
+
+48
+00:03:04,870 --> 00:03:07,230
+Now we can simplify this in a number of ways.
+
+49
+00:03:07,250 --> 00:03:11,680
+We can create a alias for datetime as dt.
+
+50
+00:03:12,040 --> 00:03:15,610
+So then we can shorten this by a little bit, or
+
+51
+00:03:15,610 --> 00:03:20,610
+you can shorten it even more just by saying, well, from the datetime module
+
+52
+00:03:20,650 --> 00:03:24,220
+let's go ahead and import just the datetime class.
+
+53
+00:03:24,790 --> 00:03:29,790
+That way you can actually set this to simply as datetime.now.month.
+
+54
+00:03:31,450 --> 00:03:36,250
+Then we have to get hold of today's day so we could copy this
+
+55
+00:03:36,310 --> 00:03:38,920
+and instead of getting the month we could get the day.
+
+56
+00:03:39,640 --> 00:03:44,620
+So now we've created today. Now you can of course split this into two parts
+
+57
+00:03:44,620 --> 00:03:46,510
+if you find it easier to understand.
+
+58
+00:03:46,840 --> 00:03:51,010
+You could say that today well is equal to datetime.now,
+
+59
+00:03:51,670 --> 00:03:55,000
+and then today_tuple is equal to a tuple
+
+60
+00:03:55,030 --> 00:04:00,030
+which is today.month, today.day.
+
+61
+00:04:00,760 --> 00:04:04,600
+So this is another variation and there's millions of variations out there
+
+62
+00:04:04,600 --> 00:04:08,860
+of course. So I think we're now done with hint 1 so let's go and delete it.
+
+63
+00:04:09,340 --> 00:04:10,870
+Now we're onto hint 2.
+
+64
+00:04:11,050 --> 00:04:14,260
+We're going to use pandas to read from the birthday CSV.
+
+65
+00:04:14,620 --> 00:04:19,480
+So we're going to import pandas. And once we've imported that,
+
+66
+00:04:19,510 --> 00:04:24,510
+we're going to use pandas to read CSV and then provide our file name
+
+67
+00:04:25,030 --> 00:04:27,490
+which is birthdays.csv.
+
+68
+00:04:28,000 --> 00:04:31,720
+So I'm going to save this as a variable called data. And remember,
+
+69
+00:04:31,750 --> 00:04:33,910
+this is now a pandas dataframe
+
+70
+00:04:34,420 --> 00:04:39,280
+which we can use to do a number of things with including using these
+
+71
+00:04:39,280 --> 00:04:42,610
+instructions to create a birthday dictionary.
+
+72
+00:04:43,330 --> 00:04:47,530
+So what we're going to do is we're going to create a dictionary comprehension,
+
+73
+00:04:48,100 --> 00:04:52,960
+and I provided the template here for you already. So you can use that
+
+74
+00:04:53,050 --> 00:04:58,050
+iterrows in order to iterate through our dataframe that was created here,
+
+75
+00:04:58,480 --> 00:05:00,100
+so data.iterrows,
+
+76
+00:05:00,310 --> 00:05:05,260
+and then we'll get hold of the index of each of those rows and also the data in
+
+77
+00:05:05,260 --> 00:05:06,160
+each of the rows.
+
+78
+00:05:06,760 --> 00:05:11,760
+And then we could create a new dictionary with a new key and a new value from
+
+79
+00:05:12,040 --> 00:05:14,470
+all of these things that we've iterated through.
+
+80
+00:05:15,130 --> 00:05:19,450
+What is that new key going to be? Well, it's going to look something like this,
+
+81
+00:05:19,480 --> 00:05:20,313
+right?
+
+82
+00:05:20,590 --> 00:05:25,570
+We're hoping to create this birthday dictionary using this particular format.
+
+83
+00:05:26,140 --> 00:05:31,140
+Now the key is going to be a tuple that consists of the birthday month and the
+
+84
+00:05:31,600 --> 00:05:32,433
+birthday day
+
+85
+00:05:32,830 --> 00:05:37,830
+so let's replace that new key with a tuple. And the birthday month is of course
+
+86
+00:05:38,050 --> 00:05:41,710
+going to come from our data row. So that we're going to say data_row
+
+87
+00:05:42,040 --> 00:05:43,930
+and then we can either use square brackets
+
+88
+00:05:43,960 --> 00:05:48,960
+or we can use the dot notation to get hold of the data in this month column.
+
+89
+00:05:50,440 --> 00:05:55,440
+So you can either say data_row.month or data_row square brackets
+
+90
+00:05:56,050 --> 00:05:59,540
+and then month, like this. So it's totally up to you.
+
+91
+00:06:00,200 --> 00:06:04,790
+And then the next item in the tuple which is still in the key,
+
+92
+00:06:04,790 --> 00:06:09,080
+so we're still before the colon here, is going to be the birthday_day.
+
+93
+00:06:09,110 --> 00:06:10,970
+So that's going to be the data_row
+
+94
+00:06:11,330 --> 00:06:14,540
+and then we have to pass in the name of the day column,
+
+95
+00:06:14,570 --> 00:06:16,670
+which is just the word day.
+
+96
+00:06:19,370 --> 00:06:20,600
+Now, once we've done that,
+
+97
+00:06:20,720 --> 00:06:25,720
+then we have to provide what is the value for each of these key value pairs in
+
+98
+00:06:26,000 --> 00:06:29,690
+our dictionary. Well, what we actually want is the data row,
+
+99
+00:06:29,690 --> 00:06:34,400
+so the entire row of data, and we want it to look a bit like this.
+
+100
+00:06:34,430 --> 00:06:37,730
+So we have our tuple with our month and our day as the key
+
+101
+00:06:38,060 --> 00:06:40,820
+and then the value is just the entire row of data.
+
+102
+00:06:41,270 --> 00:06:46,070
+So we can simply replace this value with our data row like this.
+
+103
+00:06:46,730 --> 00:06:51,730
+Now we're pretty much done with this part and we can delete all of these bits of
+
+104
+00:06:51,950 --> 00:06:56,420
+hints and comments, and I can delete this example code as well.
+
+105
+00:06:57,080 --> 00:06:59,300
+Now that we've got our birthday dictionary,
+
+106
+00:06:59,390 --> 00:07:04,390
+the next thing we want to do is we want to check to see if today matches a
+
+107
+00:07:04,490 --> 00:07:06,170
+birthday in the birthdays.csv.
+
+108
+00:07:06,470 --> 00:07:11,120
+So you wanna check if this tuple exists inside this birthday_dict
+
+109
+00:07:11,510 --> 00:07:15,830
+and if it matches one of the actual birthday month and days.
+
+110
+00:07:16,310 --> 00:07:20,720
+So we can do something like this; if today_month, today_
+
+111
+00:07:20,720 --> 00:07:23,660
+day is in our birthdays dictionary.
+
+112
+00:07:24,200 --> 00:07:28,580
+Now this today_month today_day is of course going to be our today_
+
+113
+00:07:28,670 --> 00:07:31,940
+tuple. And this way with this
+
+114
+00:07:31,970 --> 00:07:36,970
+if statement we can check to see if this today_tuple with the month and day
+
+115
+00:07:37,400 --> 00:07:42,200
+actually exists as one of our friends and family's birthdays inside this
+
+116
+00:07:42,200 --> 00:07:45,890
+birthdays_dict. And once we've done that,
+
+117
+00:07:46,010 --> 00:07:51,010
+then we can get rid of step 2 and move on to step 3. In step 3
+
+118
+00:07:51,290 --> 00:07:55,130
+we're saying, well, if there is a match, so if this if statement is true,
+
+119
+00:07:55,580 --> 00:07:58,970
+then we're gonna pick a random letter out of letter_1, 2,
+
+120
+00:07:58,970 --> 00:08:03,970
+3, from our letter templates inside here. To do that,
+
+121
+00:08:04,070 --> 00:08:06,830
+we're going to need to think about the relative file path.
+
+122
+00:08:06,830 --> 00:08:10,850
+So we have to access the letter template folder to get to
+
+123
+00:08:10,850 --> 00:08:11,960
+each of these files.
+
+124
+00:08:12,440 --> 00:08:17,440
+The file path will look something like this.
+
+125
+00:08:17,870 --> 00:08:21,740
+It will be letter_template/ one of these letters for example,
+
+126
+00:08:21,740 --> 00:08:25,910
+letter_1.txt or letter_2 or 3. In fact,
+
+127
+00:08:25,940 --> 00:08:30,380
+this particular number is going to be something that we're going to generate
+
+128
+00:08:30,440 --> 00:08:33,560
+randomly and we're going to put in there as a f-string.
+
+129
+00:08:34,160 --> 00:08:38,780
+So I need to now import the random module in addition to everything else.
+
+130
+00:08:39,320 --> 00:08:44,320
+And we can go ahead and call the random module and get a randint between one and
+
+131
+00:08:46,490 --> 00:08:47,323
+three.
+
+132
+00:08:47,410 --> 00:08:48,820
+Like this.
+
+133
+00:08:50,140 --> 00:08:53,320
+So now we've completed these two hints, and finally,
+
+134
+00:08:53,350 --> 00:08:58,350
+we're going to use the replace() method to replace the name placeholder inside each of
+
+135
+00:08:58,740 --> 00:09:03,740
+these letters right here with the actual name of the person whose birthday it is.
+
+136
+00:09:04,830 --> 00:09:09,030
+Here I've linked it to the documentation for the replace keyword
+
+137
+00:09:09,960 --> 00:09:14,550
+and this is what it looks like. For example, if we have a string like this,
+
+138
+00:09:14,580 --> 00:09:18,930
+then we can say text.replace, take the word that we want to take out
+
+139
+00:09:18,990 --> 00:09:22,140
+and then the word we want to put in. In our case,
+
+140
+00:09:22,290 --> 00:09:26,730
+we're going to have to read the text from this file with our 
+
+141
+00:09:26,730 --> 00:09:31,110
+with open, and then the file path goes in here,
+
+142
+00:09:31,440 --> 00:09:34,290
+and then we'll call this the letter_file.
+
+143
+00:09:35,700 --> 00:09:37,200
+And then from this letter_file,
+
+144
+00:09:37,200 --> 00:09:42,000
+we're going to get the contents by reading from this letter_file.
+
+145
+00:09:42,380 --> 00:09:43,213
+Right.
+
+146
+00:09:44,990 --> 00:09:49,340
+Now, once we've gotten the contents, then we can say contents.replace
+
+147
+00:09:49,730 --> 00:09:54,500
+and the thing that we want to replace is that hard-coded name placeholder
+
+148
+00:09:54,980 --> 00:09:59,750
+and the thing we want to replace it with comes from the current matching
+
+149
+00:09:59,780 --> 00:10:00,613
+birthday.
+
+150
+00:10:02,120 --> 00:10:06,800
+If the today_tuple exists inside our birthday dictionary,
+
+151
+00:10:07,250 --> 00:10:10,100
+then we can get hold of the entire row of data
+
+152
+00:10:10,550 --> 00:10:11,383
+...
+
+153
+00:10:14,660 --> 00:10:19,660
+by taking our birthday dictionary and then getting hold of the item at the key
+
+154
+00:10:21,380 --> 00:10:23,240
+which matches today_tuple.
+
+155
+00:10:24,650 --> 00:10:29,240
+Remember that today_tuple is the month and day as a tuple and the birthday
+
+156
+00:10:29,240 --> 00:10:34,240
+dictionaries all have keys as the birthday month and birthday day as a tuple.
+
+157
+00:10:35,030 --> 00:10:39,260
+So we've checked that this tuple exists as a key inside the birthday
+
+158
+00:10:39,260 --> 00:10:40,093
+dictionary,
+
+159
+00:10:40,250 --> 00:10:45,200
+and then we use the square bracket to actually access the data row for that
+
+160
+00:10:45,200 --> 00:10:49,130
+particular match. And then we've got the birthday_person,
+
+161
+00:10:49,490 --> 00:10:51,740
+so from that birthday_person
+
+162
+00:10:52,100 --> 00:10:54,740
+we're going to get hold of their name.
+
+163
+00:10:55,190 --> 00:10:58,940
+And the name lives under the name column here.
+
+164
+00:10:59,570 --> 00:11:01,610
+As long as we put the name as a string,
+
+165
+00:11:01,970 --> 00:11:05,510
+then we should be able to get hold of their actual name right here.
+
+166
+00:11:06,770 --> 00:11:09,920
+And that is the end of step 3.
+
+167
+00:11:10,550 --> 00:11:13,130
+So now we're finally moving on to step 4
+
+168
+00:11:13,370 --> 00:11:15,380
+where we're going to send our letter
+
+169
+00:11:15,380 --> 00:11:18,650
+which was generated here in our contents,
+
+170
+00:11:19,010 --> 00:11:22,400
+and we're going to send it to that birthday person's email address.
+
+171
+00:11:23,840 --> 00:11:27,470
+So the first thing we're going to need is to create a connection and we're going
+
+172
+00:11:27,470 --> 00:11:30,770
+to use the smtplib library to do that.
+
+173
+00:11:31,130 --> 00:11:35,750
+So import smtplib. And then we're going to say with smtp
+
+174
+00:11:35,750 --> 00:11:39,830
+lib.SMTP, let's create an object from that
+
+175
+00:11:40,130 --> 00:11:44,480
+and we have to provide the host string. So as I mentioned before,
+
+176
+00:11:44,480 --> 00:11:48,350
+depending on which email provider you use, it will be different.
+
+177
+00:11:48,860 --> 00:11:53,270
+Now I'm going to put in my email and password at the top as constants.
+
+178
+00:11:53,770 --> 00:11:55,420
+Of course, this is not going to work for you
+
+179
+00:11:55,420 --> 00:11:58,450
+so you're going to have to use your own email and password.
+
+180
+00:11:59,020 --> 00:12:01,660
+And depending on which email provider you use,
+
+181
+00:12:01,690 --> 00:12:06,010
+you'll have to pick the correct SMTP. So I'm sending emails
+
+182
+00:12:06,010 --> 00:12:10,120
+using Gmail so I'm going to change this to smtp.gmail.com.
+
+183
+00:12:10,690 --> 00:12:15,690
+And I'm going to save this connection that I create as the connection.
+
+184
+00:12:16,630 --> 00:12:21,630
+Step 2 is to go ahead and call the starrttls.
+
+185
+00:12:23,050 --> 00:12:27,190
+So we'll get our connection and then call starttls.
+
+186
+00:12:27,670 --> 00:12:32,670
+And then step 3  is to log in to our connection by calling login.
+
+187
+00:12:35,530 --> 00:12:40,150
+And then we have to provide the email that we want to log into and the password
+
+188
+00:12:40,180 --> 00:12:44,920
+for that email account. Finally,
+
+189
+00:12:44,980 --> 00:12:49,980
+we're going to set up the subject and the content by calling connection.
+
+190
+00:12:50,350 --> 00:12:55,060
+sendmail. And the from address is MY_EMAIL,
+
+191
+00:12:55,630 --> 00:13:00,280
+the to address is going to be the email of the birthday person.
+
+192
+00:13:00,730 --> 00:13:03,130
+So we're going to get our birthday_person
+
+193
+00:13:03,820 --> 00:13:08,710
+and then we're going to get hold of their email by looking at the name of the
+
+194
+00:13:08,740 --> 00:13:12,460
+email column, which is just email actually like this.
+
+195
+00:13:12,970 --> 00:13:16,870
+And then finally, we can add in the actual message.
+
+196
+00:13:18,880 --> 00:13:19,690
+I'm going to again,
+
+197
+00:13:19,690 --> 00:13:23,230
+format this so that it's a little bit easier to read for you.
+
+198
+00:13:25,480 --> 00:13:27,550
+And then we're going to set up our message.
+
+199
+00:13:27,760 --> 00:13:32,760
+This is going to be an f-string and the subject is always going to be the same.
+
+200
+00:13:33,130 --> 00:13:35,110
+It's going to be happy birthday.
+
+201
+00:13:36,280 --> 00:13:40,840
+And then after two of these new lines, we can add the actual message body.
+
+202
+00:13:41,350 --> 00:13:45,970
+Now the message body is going to be the contents that we created because, 
+
+203
+00:13:45,970 --> 00:13:49,360
+remember, that takes a random letter, reads it
+
+204
+00:13:49,420 --> 00:13:53,500
+and then replaces in the name placeholder with the birthday person's name.
+
+205
+00:13:54,130 --> 00:13:55,870
+So that's what we're going to put in here.
+
+206
+00:13:56,440 --> 00:13:59,860
+And now that's step 4 completed as well
+
+207
+00:14:00,220 --> 00:14:04,150
+and we can now go ahead and run this file.
+
+208
+00:14:04,630 --> 00:14:09,250
+And hopefully it will show us process finished with exit code zero,
+
+209
+00:14:09,280 --> 00:14:13,030
+which is the best thing we can see. That means everything went well.
+
+210
+00:14:13,510 --> 00:14:15,610
+And remember that the birthday
+
+211
+00:14:15,610 --> 00:14:19,840
+which I set to test was this row of data.
+
+212
+00:14:20,320 --> 00:14:25,320
+So it should have replaced a random letter's placeholder with the name of mum
+
+213
+00:14:26,650 --> 00:14:31,540
+and it should've sent that email to appbreweryinfo@gmail.com. So now
+
+214
+00:14:31,540 --> 00:14:34,870
+if I take a look at my appbreweryinfo@gmail.com,
+
+215
+00:14:35,380 --> 00:14:39,280
+you can see the email come through, but you might notice a bug here.
+
+216
+00:14:39,700 --> 00:14:42,820
+The name was actually never replaced. Instead,
+
+217
+00:14:42,880 --> 00:14:44,710
+we're still seeing this placeholder.
+
+218
+00:14:45,100 --> 00:14:48,550
+So this is a really common mistake that a lot of people make
+
+219
+00:14:48,850 --> 00:14:53,850
+and the reason is because the text replacement comes out as the output.
+
+220
+00:14:54,620 --> 00:14:58,880
+So it doesn't actually change the original text just by calling that method.
+
+221
+00:14:59,240 --> 00:14:59,810
+Instead,
+
+222
+00:14:59,810 --> 00:15:04,760
+you have to save it to a new variable in order to see the replaced text.
+
+223
+00:15:05,720 --> 00:15:10,250
+So in our case what that means is we can't just say content.replace.
+
+224
+00:15:10,520 --> 00:15:14,660
+We actually have to say contents = contents.replace.
+
+225
+00:15:14,690 --> 00:15:19,690
+So we replace the contents and then we save it back to the original variable.
+
+226
+00:15:21,260 --> 00:15:25,460
+So now if I run this again, you can see that this time
+
+227
+00:15:25,490 --> 00:15:28,940
+our message actually has the name replaced in here,
+
+228
+00:15:29,270 --> 00:15:34,270
+it has a random letter that it's generated and it has sent it to the correct
+
+229
+00:15:34,490 --> 00:15:39,140
+email address. If you want to take a look at the completed code,
+
+230
+00:15:39,200 --> 00:15:44,180
+then you'll find it in the course resources as the end code for the birthday
+
+231
+00:15:44,180 --> 00:15:45,140
+wisher project
+
+232
+00:15:45,530 --> 00:15:49,220
+and this contains a lot of things that we've talked about so far,
+
+233
+00:15:49,520 --> 00:15:53,180
+including dictionary comprehension, reading CSVs,
+
+234
+00:15:53,210 --> 00:15:57,590
+creating dataframes from pandas, using and creating tuples,
+
+235
+00:15:57,980 --> 00:16:02,780
+working with dictionaries, file paths, opening files,
+
+236
+00:16:02,840 --> 00:16:05,870
+replacing files, reading them, and of course,
+
+237
+00:16:05,930 --> 00:16:09,920
+writing and sending email as well as the datetime module.
+
+238
+00:16:10,550 --> 00:16:13,370
+So if you got stuck on any of these aspects,
+
+239
+00:16:13,760 --> 00:16:18,590
+then be sure to take a look at the previous lesson where we covered them
+
+240
+00:16:18,650 --> 00:16:23,650
+because we covered all of these concepts in a lot of detail in previous lessons.
+
+241
+00:16:24,530 --> 00:16:28,070
+So make sure that you don't just skip ahead if you actually got stuck.
+
+242
+00:16:28,160 --> 00:16:33,160
+It probably is an indicator that it's a good time to revisit and review some of
+
+243
+00:16:33,800 --> 00:16:37,910
+these concepts. For example, if you got stuck on dictionary comprehension,
+
+244
+00:16:38,180 --> 00:16:42,140
+then go back to the lessons where we did list and dictionary comprehensions
+
+245
+00:16:42,440 --> 00:16:46,490
+and try out some of the exercises again, just to refresh your mind. Now,
+
+246
+00:16:46,520 --> 00:16:51,520
+if you got stuck on working with the iterrows or the data that comes from our
+
+247
+00:16:52,520 --> 00:16:57,020
+pandas dataframes, then go back to those lessons where we talked about CSVs,
+
+248
+00:16:57,020 --> 00:17:00,770
+and we talked about pandas because nothing here is new,
+
+249
+00:17:01,070 --> 00:17:06,070
+but it does require your understanding and your ability to know how to apply the
+
+250
+00:17:06,890 --> 00:17:10,550
+knowledge that you've learned before. Now,
+
+251
+00:17:10,640 --> 00:17:15,640
+the final thing I want to show you in the next lesson is how to get this code to
+
+252
+00:17:16,310 --> 00:17:21,310
+actually run every day so it can actually check every single day to see if it
+
+253
+00:17:22,190 --> 00:17:24,500
+needs to send out a birthday email.
+
+254
+00:17:24,980 --> 00:17:27,650
+So for all of that and more, I'll see you on the next lesson.
+

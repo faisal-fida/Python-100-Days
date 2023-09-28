@@ -1,0 +1,812 @@
+1
+00:00:00,390 --> 00:00:04,320
+Now that the UI is all set up, it's time to go onto the next step
+
+2
+00:00:04,590 --> 00:00:09,030
+where we actually can start saving some of this data that the user is entering.
+
+3
+00:00:09,810 --> 00:00:12,870
+So that there's a couple of things I want to show you before we get started.
+
+4
+00:00:13,380 --> 00:00:16,920
+Firstly, notice how when we run our code at the moment,
+
+5
+00:00:17,280 --> 00:00:18,900
+it just launches our app.
+
+6
+00:00:19,050 --> 00:00:24,000
+But wouldn't it be nice if the cursor was already within the first textbox? That
+
+7
+00:00:24,000 --> 00:00:27,600
+means the user can start typing straight away when they launched the password
+
+8
+00:00:27,600 --> 00:00:32,190
+manager. To do that, you can of course dig through the docs,
+
+9
+00:00:32,250 --> 00:00:37,250
+but the easiest way is to get hold of that website entry and then call a method
+
+10
+00:00:38,190 --> 00:00:39,750
+on it called a focus.
+
+11
+00:00:40,170 --> 00:00:43,950
+And this will focus the cursor into that particular entry.
+
+12
+00:00:44,220 --> 00:00:45,540
+And you can see that right there.
+
+13
+00:00:46,500 --> 00:00:50,370
+Now the next thing that would be nice is when you're signing up for lots of
+
+14
+00:00:50,370 --> 00:00:52,530
+websites, at least in my case,
+
+15
+00:00:52,890 --> 00:00:55,860
+I often use just one email to sign up.
+
+16
+00:00:56,160 --> 00:01:01,160
+So wouldn't it be nice if when we launch our password manager that this email
+
+17
+00:01:01,800 --> 00:01:06,030
+field is already pre-populated with our most commonly used email?
+
+18
+00:01:06,660 --> 00:01:06,930
+Well,
+
+19
+00:01:06,930 --> 00:01:11,850
+we can do that by simply adding a starting value to that email entry.
+
+20
+00:01:12,570 --> 00:01:17,280
+And the way that we do that is through a method called insert.
+
+21
+00:01:17,760 --> 00:01:21,180
+Now insert it takes two parameters. And in fact,
+
+22
+00:01:21,180 --> 00:01:26,180
+you can actually scroll down to the insert method and you can see it describes
+
+23
+00:01:26,430 --> 00:01:29,130
+in detail that it takes an index
+
+24
+00:01:29,550 --> 00:01:34,550
+and also the string that you want to insert. The way that the index works is it's
+
+25
+00:01:36,030 --> 00:01:37,950
+basically where the cursor is.
+
+26
+00:01:38,490 --> 00:01:43,490
+If you wanted to insert it at the very beginning of that email entry,
+
+27
+00:01:44,430 --> 00:01:45,750
+then you could just put in zero.
+
+28
+00:01:45,780 --> 00:01:50,700
+That basically inserts this piece of text at the first zeroth character.
+
+29
+00:01:51,390 --> 00:01:55,860
+Alternatively, there's another useful index which is called end.
+
+30
+00:01:56,430 --> 00:02:01,200
+And this end comes from tkinter constants and its just a constant
+
+31
+00:02:01,200 --> 00:02:05,430
+that's gonna represent the very last character that's inside that entry.
+
+32
+00:02:05,940 --> 00:02:08,250
+For example, if inside your entry
+
+33
+00:02:08,250 --> 00:02:12,750
+you already had some text and you want to insert it after your text here,
+
+34
+00:02:12,870 --> 00:02:14,910
+then you would use the index as end.
+
+35
+00:02:15,300 --> 00:02:17,430
+But if you want to insert it at the very beginning,
+
+36
+00:02:17,490 --> 00:02:21,390
+then you would use the index as zero. Now in our case,
+
+37
+00:02:21,450 --> 00:02:25,020
+it shouldn't actually matter because our email entry will start out being
+
+38
+00:02:25,020 --> 00:02:26,190
+completely empty.
+
+39
+00:02:26,490 --> 00:02:29,910
+So I'm going to choose to insert this piece of text at the very beginning
+
+40
+00:02:30,390 --> 00:02:34,980
+and the text that I'm going to insert is just a example dummy email.
+
+41
+00:02:35,010 --> 00:02:38,250
+This is not my real email, but in your case,
+
+42
+00:02:38,310 --> 00:02:40,140
+if you were creating your own password manager,
+
+43
+00:02:40,200 --> 00:02:45,090
+then you could put down your own email so that every time you run the app,
+
+44
+00:02:45,180 --> 00:02:49,140
+it already starts out being pre-populated when that email that you've got.
+
+45
+00:02:50,460 --> 00:02:55,460
+So now the rest of the challenge is pretty much going to be up to you. Inside
+
+46
+00:02:56,460 --> 00:02:59,130
+this save password section,
+
+47
+00:02:59,470 --> 00:03:03,880
+what I want you to do is to be able to take the inputs that are put into the
+
+48
+00:03:03,880 --> 00:03:07,240
+website entry, the email entry and the password entry,
+
+49
+00:03:07,780 --> 00:03:10,690
+and when the user clicks on this add button,
+
+50
+00:03:11,230 --> 00:03:16,230
+I want you to somehow figure out how to save that data into a file called data
+
+51
+00:03:18,010 --> 00:03:18,843
+.txt.
+
+52
+00:03:19,270 --> 00:03:23,500
+This data.txt is going to take the website that the user entered,
+
+53
+00:03:23,740 --> 00:03:27,730
+the email that they entered and the password that they entered
+
+54
+00:03:28,120 --> 00:03:32,440
+and it's going to put it in here with a space in between and a pipe symbol that
+
+55
+00:03:32,440 --> 00:03:36,370
+you can find on your keyboard. Or in fact, you can format this however you like
+
+56
+00:03:36,400 --> 00:03:37,720
+because at the end of the day,
+
+57
+00:03:38,020 --> 00:03:41,080
+you're going to be the one looking at this file to find your emails and
+
+58
+00:03:41,080 --> 00:03:44,140
+passwords. So format it in a way that's comfortable for you.
+
+59
+00:03:45,250 --> 00:03:50,250
+But essentially, what we want to do is to transport things that the user types
+
+60
+00:03:50,710 --> 00:03:51,543
+into here,
+
+61
+00:03:51,610 --> 00:03:56,610
+the website that this password is for, their email and their password and the
+
+62
+00:03:57,970 --> 00:04:02,140
+moment that they press this add button to trigger some sort of function that
+
+63
+00:04:02,140 --> 00:04:06,550
+saves this information into a data.txt file.
+
+64
+00:04:06,910 --> 00:04:08,920
+And that format is the information like this.
+
+65
+00:04:09,310 --> 00:04:12,640
+And every time the user adds another entry,
+
+66
+00:04:12,850 --> 00:04:17,560
+it's going to be added on a new line and it's going to be appended to the end of
+
+67
+00:04:17,560 --> 00:04:18,670
+the previous entry.
+
+68
+00:04:19,360 --> 00:04:23,620
+So I know that it's been a little while since we last dealt with writing to
+
+69
+00:04:23,620 --> 00:04:28,300
+file. So I'll link to the documentation that's relevant to this challenge.
+
+70
+00:04:28,660 --> 00:04:32,830
+One is how to write to file using Python and you can see the demo code
+
+71
+00:04:32,830 --> 00:04:34,990
+which you can run and you can try out,
+
+72
+00:04:35,260 --> 00:04:39,010
+and then you're going to format that to work for your particular case. Now,
+
+73
+00:04:39,010 --> 00:04:41,830
+the other thing is the tkinter entry widget.
+
+74
+00:04:42,130 --> 00:04:45,550
+So there is the insert method that's going to be pretty useful.
+
+75
+00:04:45,970 --> 00:04:50,110
+But the other thing that you want to happen is once you press the add button,
+
+76
+00:04:50,440 --> 00:04:54,520
+you want all of this information other than the email to be cleared out.
+
+77
+00:04:54,970 --> 00:04:59,970
+So you're probably also going to have to take a look at the delete function.
+
+78
+00:05:00,760 --> 00:05:01,900
+And at the very top,
+
+79
+00:05:01,930 --> 00:05:06,930
+you can see it even shows you how to delete something entirely from an entry.
+
+80
+00:05:07,780 --> 00:05:11,290
+Using these two pieces of documentation.
+
+81
+00:05:11,950 --> 00:05:13,900
+I want you to be able to take this information,
+
+82
+00:05:14,020 --> 00:05:15,940
+put it into a data.txt file
+
+83
+00:05:16,300 --> 00:05:21,130
+and afterward, wipe clear this website entry and the password entry.
+
+84
+00:05:21,610 --> 00:05:25,630
+So that's all there is to it. There's going to be quite a bit of code writing.
+
+85
+00:05:25,870 --> 00:05:29,350
+So you have a think about it and go ahead and complete this challenge.
+
+86
+00:05:29,770 --> 00:05:32,860
+I'll wait for you and we'll go through the solution afterward together.
+
+87
+00:05:37,240 --> 00:05:42,100
+So the first thing I need to happen is when the user presses on the add button,
+
+88
+00:05:42,160 --> 00:05:45,670
+I need to trigger a function. So in this add_button,
+
+89
+00:05:45,730 --> 00:05:50,730
+I'm also going to add a command and I'm going to call my function save.
+
+90
+00:05:51,190 --> 00:05:55,090
+So I'm going to put that function inside the section save password.
+
+91
+00:05:55,990 --> 00:06:00,740
+Now this save function is going to write to a file
+
+92
+00:06:00,740 --> 00:06:02,480
+which is called data.txt,
+
+93
+00:06:02,630 --> 00:06:07,250
+or in fact, you can call it anything you want. Inside the save function
+
+94
+00:06:07,310 --> 00:06:10,130
+we want to be able to write to a particular file.
+
+95
+00:06:10,370 --> 00:06:13,640
+So we need to open the file and then we need to write to it.
+
+96
+00:06:14,000 --> 00:06:18,050
+And we can use the option a, to append to the end of the file.
+
+97
+00:06:18,350 --> 00:06:22,280
+Or write, which overrides any existing content or read,
+
+98
+00:06:22,310 --> 00:06:25,520
+which just reads the actual file. Now in our case,
+
+99
+00:06:25,550 --> 00:06:30,110
+every time we add a new password, we wanna add it to the previous passwords.
+
+100
+00:06:30,350 --> 00:06:32,000
+So we're going to need this append.
+
+101
+00:06:33,110 --> 00:06:35,630
+So let's go ahead and open a file
+
+102
+00:06:35,660 --> 00:06:40,660
+which we're going to call data.txt and we're going to open it using the
+
+103
+00:06:41,330 --> 00:06:43,010
+append mode. Now,
+
+104
+00:06:43,010 --> 00:06:48,010
+remember that when you're opening a file using the append mode or the write mode,
+
+105
+00:06:48,350 --> 00:06:51,500
+and that file doesn't exist, it's simply going to create it.
+
+106
+00:06:52,220 --> 00:06:56,270
+We are gonna open this and you can either save it to a file name,
+
+107
+00:06:56,270 --> 00:06:59,720
+so you could do it like this data_file = open,
+
+108
+00:07:00,230 --> 00:07:05,000
+or you might have remembered that previously we spoke about the with keyword.
+
+109
+00:07:05,480 --> 00:07:10,480
+So we can say with open this particular data file as our data file.
+
+110
+00:07:12,380 --> 00:07:17,380
+And what this allows us to do is it will close this file automatically without
+
+111
+00:07:18,050 --> 00:07:21,110
+us having to later write file.close.
+
+112
+00:07:22,100 --> 00:07:25,220
+So it's a much better way of working with files.
+
+113
+00:07:26,030 --> 00:07:27,830
+But if you didn't remember the with keyword,
+
+114
+00:07:27,860 --> 00:07:31,340
+don't worry. Using the open will still work. Now,
+
+115
+00:07:31,370 --> 00:07:34,760
+once we've opened our data.txt in append mode,
+
+116
+00:07:34,880 --> 00:07:39,260
+the next step is to actually add the pieces of data. Now,
+
+117
+00:07:39,290 --> 00:07:43,640
+how do we get hold of data from our entries? Well,
+
+118
+00:07:43,640 --> 00:07:47,000
+that's where the entry documentation comes in handy.
+
+119
+00:07:47,510 --> 00:07:49,460
+And you can see even at the very top,
+
+120
+00:07:49,460 --> 00:07:53,600
+it tells you that to fetch the current entry text, use the get method,
+
+121
+00:07:53,840 --> 00:07:55,370
+so the entry.get.
+
+122
+00:07:56,000 --> 00:08:00,500
+We can get hold of our website by getting hold of the website entry and then
+
+123
+00:08:00,500 --> 00:08:01,760
+calling .get.
+
+124
+00:08:02,270 --> 00:08:05,510
+And then we can do the same for email and password.
+
+125
+00:08:07,400 --> 00:08:10,550
+Once we've gotten all of these pieces of text,
+
+126
+00:08:10,940 --> 00:08:13,790
+then we're going to be writing it into our file.
+
+127
+00:08:14,030 --> 00:08:17,000
+So our data_file.write
+
+128
+00:08:17,540 --> 00:08:20,420
+and what we're going to write is a string
+
+129
+00:08:20,450 --> 00:08:22,520
+which I'm going to format using an f-string.
+
+130
+00:08:22,850 --> 00:08:27,850
+And I'm first going to put in the website and then space and pipe symbol,
+
+131
+00:08:28,340 --> 00:08:31,160
+space and then it's going to be the email
+
+132
+00:08:33,680 --> 00:08:38,030
+and finally, it's going to be the password. Let's check this out,
+
+133
+00:08:38,030 --> 00:08:39,830
+let's run it and see if it works
+
+134
+00:08:42,730 --> 00:08:42,910
+right?
+
+135
+00:08:42,910 --> 00:08:46,990
+Say we're signing up for Amazon, I'm going to use my normal username
+
+136
+00:08:47,080 --> 00:08:51,130
+and I'm going to create a password which is super insecure,
+
+137
+00:08:51,130 --> 00:08:52,420
+which you should never use.
+
+138
+00:08:52,720 --> 00:08:57,060
+But now I'm going to click on add. And after I've clicked it,
+
+139
+00:08:57,090 --> 00:08:59,160
+even though nothing has happened so far,
+
+140
+00:08:59,190 --> 00:09:01,800
+if we take a look inside our project folder,
+
+141
+00:09:02,100 --> 00:09:06,630
+you can see we've now magically created this data.txt file. And you can see
+
+142
+00:09:06,630 --> 00:09:10,860
+it's formatted our website, email, and password, all into that file.
+
+143
+00:09:11,730 --> 00:09:14,730
+So that's pretty much a success. Now,
+
+144
+00:09:14,760 --> 00:09:18,570
+the other thing I mentioned is that it would be nice to get some sort of
+
+145
+00:09:18,570 --> 00:09:23,250
+indication that it worked right? And for our application to be prepped and ready
+
+146
+00:09:23,250 --> 00:09:25,590
+for the next piece of data to be entered.
+
+147
+00:09:25,800 --> 00:09:30,330
+So we wanted to delete whatever text there's inside the website entry and the
+
+148
+00:09:30,330 --> 00:09:35,130
+password entry. If you take a look again at the documentation,
+
+149
+00:09:35,520 --> 00:09:40,290
+you can see that you can delete whatever is inside the entry by calling delete
+
+150
+00:09:40,350 --> 00:09:44,850
+and telling it to delete from a particular index to another index.
+
+151
+00:09:45,270 --> 00:09:50,160
+Now, there's more detailed if you actually scroll down to the actual method and
+
+152
+00:09:50,160 --> 00:09:55,160
+it tells you that it takes two parameters; first and last. First is the start of
+
+153
+00:09:55,950 --> 00:09:59,580
+the range and last is the end of the range.
+
+154
+00:09:59,850 --> 00:10:03,600
+And it tells you that if you omit it, it's only going to remove one character.
+
+155
+00:10:03,600 --> 00:10:05,010
+So that's not what we want.
+
+156
+00:10:05,400 --> 00:10:09,540
+We want it to remove all of the characters in a particular entry.
+
+157
+00:10:09,900 --> 00:10:14,100
+So let's start out with our website entry, call delete on it,
+
+158
+00:10:14,580 --> 00:10:19,580
+and we're going to start from index zero and go all the way to the end. In the
+
+159
+00:10:20,430 --> 00:10:23,160
+same way that we used our index
+
+160
+00:10:23,370 --> 00:10:27,120
+when we inserted our email to the email entry,
+
+161
+00:10:27,360 --> 00:10:32,310
+we moved the cursor to the very start, the zeroth character in that entry.
+
+162
+00:10:32,730 --> 00:10:36,390
+In this case, we're deleting from the zeroth character to
+
+163
+00:10:36,390 --> 00:10:38,310
+the end of the entry.
+
+164
+00:10:39,420 --> 00:10:42,060
+And then we can do the same for our password entry,
+
+165
+00:10:42,650 --> 00:10:43,483
+right?
+
+166
+00:10:45,050 --> 00:10:46,970
+And now if we run this code,
+
+167
+00:10:47,000 --> 00:10:52,000
+you can see that once I type something in and let's just generate another bad
+
+168
+00:10:52,310 --> 00:10:55,460
+password Qwerty. And by the way,
+
+169
+00:10:55,490 --> 00:11:00,110
+if I've called out any of your passwords, just for my sake, um,
+
+170
+00:11:00,410 --> 00:11:03,710
+and definitely for your own security, go ahead and change it.
+
+171
+00:11:03,770 --> 00:11:07,190
+These are really bad passwords. But either way,
+
+172
+00:11:07,280 --> 00:11:11,270
+I'm going to click add and you can see the moment that I've clicked that my
+
+173
+00:11:11,270 --> 00:11:16,250
+website and my password entries have now cleared out and it's now ready to take
+
+174
+00:11:16,340 --> 00:11:20,780
+the next entry. And back in my data.txt, I've now got 
+
+175
+00:11:20,780 --> 00:11:21,680
+another entry.
+
+176
+00:11:22,070 --> 00:11:26,030
+But notice this, it's been added to the end of the previous entry,
+
+177
+00:11:26,390 --> 00:11:30,440
+but its on the same line. That's a little bit confusing.
+
+178
+00:11:30,980 --> 00:11:35,870
+Now you might remember this special character which is \n,
+
+179
+00:11:36,470 --> 00:11:40,310
+and that allows us to enter things onto a new line.
+
+180
+00:11:40,850 --> 00:11:45,850
+Let's delete everything that we've got in here so far and let's hit save so that
+
+181
+00:11:46,490 --> 00:11:48,110
+we can start from scratch.
+
+182
+00:11:48,650 --> 00:11:52,400
+Now let's run our program with that new line inserted.
+
+183
+00:11:53,890 --> 00:11:58,890
+And if I go ahead and add the website and let me think of another bad password,
+
+184
+00:11:59,650 --> 00:12:04,060
+um, password is a really terrible password. Now,
+
+185
+00:12:04,060 --> 00:12:05,440
+if I click add,
+
+186
+00:12:05,500 --> 00:12:10,500
+you'll notice that those fields disappear and that the password gets added into
+
+187
+00:12:10,630 --> 00:12:14,260
+here. Now, if I try and add another value in here,
+
+188
+00:12:14,650 --> 00:12:19,650
+so let's say-- then you can see that the next value got added in on the next line,
+
+189
+00:12:21,640 --> 00:12:23,890
+which is a lot better in terms of formatting.
+
+190
+00:12:24,670 --> 00:12:27,910
+These are just small things that make things look tidy and neat.
+
+191
+00:12:28,450 --> 00:12:33,450
+But the big part was remembering how to save things into a file and using the
+
+192
+00:12:35,200 --> 00:12:40,200
+documentation to get hold of the values inside our entries and putting it into
+
+193
+00:12:40,750 --> 00:12:41,650
+our data file.
+
+194
+00:12:43,210 --> 00:12:47,410
+One of the things you might have realized is that it's a terrible user
+
+195
+00:12:47,410 --> 00:12:51,250
+experience when the user enters a piece of data,
+
+196
+00:12:51,250 --> 00:12:56,250
+say a website and a password and they click add. Things sort of disappear,
+
+197
+00:13:00,010 --> 00:13:05,010
+but they don't really have a confirmation that this, in fact, did work.
+
+198
+00:13:06,340 --> 00:13:07,840
+So in the next lesson,
+
+199
+00:13:07,900 --> 00:13:11,350
+we're going to look at how we can create some popups so that we can show the
+
+200
+00:13:11,350 --> 00:13:14,170
+user what the result was of their action.
+
+201
+00:13:14,440 --> 00:13:18,820
+We can tell them if it was successful or if it was not, ask them to confirm
+
+202
+00:13:18,850 --> 00:13:23,650
+whether if they're happy with that data entry. So for all of that and more,
+
+203
+00:13:23,860 --> 00:13:24,910
+I'll see you in the next lesson.
+

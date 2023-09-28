@@ -1,0 +1,552 @@
+1
+00:00:00,270 --> 00:00:01,110
+In this lesson,
+
+2
+00:00:01,140 --> 00:00:06,140
+I want to talk about the file system and how you could use Python to open up
+
+3
+00:00:06,750 --> 00:00:11,730
+files, read files, write to the files, and also close them down again,
+
+4
+00:00:12,150 --> 00:00:14,370
+all without touching the mouse.
+
+5
+00:00:14,580 --> 00:00:18,870
+So that way we can start saving our high scores into a file and retrieve 
+
+6
+00:00:18,870 --> 00:00:20,880
+it the next time we open up our program.
+
+7
+00:00:21,630 --> 00:00:26,070
+Let's start out by trying to do some of the simplest things with a file, reading
+
+8
+00:00:26,100 --> 00:00:26,933
+and writing.
+
+9
+00:00:28,050 --> 00:00:32,490
+Now I've created a new project using PyCharm called day-24,
+
+10
+00:00:33,000 --> 00:00:36,450
+and I've created my main.py where we're going to write our Python code.
+
+11
+00:00:36,990 --> 00:00:40,890
+But in addition, I'm also going to create a new file
+
+12
+00:00:41,130 --> 00:00:46,130
+which is going to be called my_file.txt.
+
+13
+00:00:46,950 --> 00:00:51,090
+So this is going to be a text file. Now, inside this text file,
+
+14
+00:00:51,090 --> 00:00:56,040
+I'm going to write some text. Hello, my name is Angela. And if you want,
+
+15
+00:00:56,070 --> 00:01:01,070
+you can actually find this text file inside your project folder,
+
+16
+00:01:02,280 --> 00:01:06,540
+and you can actually open it up with your native text editing software.
+
+17
+00:01:06,540 --> 00:01:10,140
+So TextEdit on Mac or Notepad on Windows.
+
+18
+00:01:10,560 --> 00:01:14,970
+And you can see it's just a bunch of text. There's nothing really special here.
+
+19
+00:01:16,200 --> 00:01:20,940
+But what we can do using Python is that we can actually open up that file.
+
+20
+00:01:21,510 --> 00:01:26,010
+So, notice how this method, open, is a inbuilt method.
+
+21
+00:01:26,010 --> 00:01:29,340
+So you don't have to import anything, you can use it directly.
+
+22
+00:01:29,970 --> 00:01:31,830
+And it takes a number of inputs;
+
+23
+00:01:31,980 --> 00:01:36,120
+the file that you want to open, the mode that you want to open that file in,
+
+24
+00:01:36,360 --> 00:01:41,360
+and a whole bunch of other optional things that you can specify. In our case,
+
+25
+00:01:41,520 --> 00:01:44,850
+I'm going to specify the name of my file as a string,
+
+26
+00:01:45,150 --> 00:01:48,480
+so my_file.txt.
+
+27
+00:01:48,900 --> 00:01:50,550
+So remember that extension.
+
+28
+00:01:51,120 --> 00:01:56,040
+And then I'm going to open this file and I'm going to save it inside a variable
+
+29
+00:01:56,040 --> 00:02:00,600
+called file. So when we hit run right now, nothing's really going to happen.
+
+30
+00:02:00,750 --> 00:02:04,020
+You're not going to see anything happening, but behind the scenes,
+
+31
+00:02:04,290 --> 00:02:08,790
+Python has already opened up this file and its ready for the next operation that
+
+32
+00:02:08,790 --> 00:02:10,770
+you might want to do on that file.
+
+33
+00:02:11,340 --> 00:02:16,340
+So the next thing I wanna do is I wanna read the file and this read method
+
+34
+00:02:16,710 --> 00:02:20,400
+returns the contents of that file as a string.
+
+35
+00:02:20,790 --> 00:02:25,050
+So we can now save it inside a variable called contents
+
+36
+00:02:25,500 --> 00:02:28,470
+and I can go ahead and print out this contents.
+
+37
+00:02:28,950 --> 00:02:32,280
+So when I hit run right now, you can see what gets printed out
+
+38
+00:02:32,580 --> 00:02:35,490
+is the content from my_file.txt.
+
+39
+00:02:36,870 --> 00:02:41,870
+And if I go ahead and modify my file to add some more lines and I hit run again,
+
+40
+00:02:42,180 --> 00:02:45,360
+you can see that all of the lines are being printed
+
+41
+00:02:45,480 --> 00:02:49,080
+once we've opened the file, we've read the file,
+
+42
+00:02:49,440 --> 00:02:54,440
+and we print the contents that we have read. At the end of all of our work,
+
+43
+00:02:56,130 --> 00:03:00,130
+what we have to do once we're done with that file that we've opened
+
+44
+00:03:00,310 --> 00:03:03,760
+we also have to close it. If there's an open,
+
+45
+00:03:03,760 --> 00:03:07,900
+there's probably going to be a close. Now, why do we need to close the file?
+
+46
+00:03:08,110 --> 00:03:10,930
+Well, once Python opens up that file,
+
+47
+00:03:11,410 --> 00:03:15,010
+it basically takes up some of the resources of your computer.
+
+48
+00:03:15,640 --> 00:03:16,990
+And at some point later on,
+
+49
+00:03:16,990 --> 00:03:20,860
+it might decide to close it and free up those resources,
+
+50
+00:03:21,070 --> 00:03:24,160
+but we don't know when that's going to happen and if it will happen.
+
+51
+00:03:24,580 --> 00:03:29,170
+So instead, we're going to tell it to close down the file manually using this
+
+52
+00:03:29,170 --> 00:03:30,003
+line of code.
+
+53
+00:03:30,880 --> 00:03:35,710
+It's a similar concept to having lots and lots of tabs open in your browser.
+
+54
+00:03:36,130 --> 00:03:39,460
+While it's kind of convenient to have all of these tabs open,
+
+55
+00:03:40,030 --> 00:03:43,510
+if you actually want your computer to perform at its best
+
+56
+00:03:43,810 --> 00:03:47,800
+you actually want to only use as many tabs as you need.
+
+57
+00:03:48,400 --> 00:03:52,750
+Every extra tab is going to add a little bit of burden to your computer
+
+58
+00:03:53,170 --> 00:03:57,280
+and especially if you're using a very heavy application like Chrome
+
+59
+00:03:57,520 --> 00:04:01,540
+which likes to take up a lot of resources of your CPU and your computer.
+
+60
+00:04:01,930 --> 00:04:04,210
+If you have more than 20 or 30 tabs,
+
+61
+00:04:04,450 --> 00:04:09,220
+you'll notice a significant decrease in the speed of your computer.
+
+62
+00:04:09,730 --> 00:04:12,490
+So here's a computer tip as well as Programming tip,
+
+63
+00:04:12,850 --> 00:04:17,850
+always close down tabs that you've opened and always close out on files that
+
+64
+00:04:18,400 --> 00:04:23,400
+you've opened. Now because it's kind of hard to remember to close a file because
+
+65
+00:04:24,220 --> 00:04:28,060
+we might be doing lots of other things in between the open and close, right?
+
+66
+00:04:28,060 --> 00:04:29,890
+We might be writing to the file,
+
+67
+00:04:29,890 --> 00:04:34,890
+we might be modifying it or reading it line by line or doing lots of different
+
+68
+00:04:35,380 --> 00:04:37,210
+things. So instead,
+
+69
+00:04:37,480 --> 00:04:42,480
+what many Python developers opt for is a different way of opening the file.
+
+70
+00:04:43,390 --> 00:04:48,390
+We can use a 'with' keyword. And 'with' we can open this file and then we can open
+
+71
+00:04:50,620 --> 00:04:55,330
+it as whatever it is we decide to name. So this you can name to anything.
+
+72
+00:04:55,330 --> 00:04:57,820
+You can name it as f, you can name it as file.
+
+73
+00:04:58,030 --> 00:05:02,170
+It's basically the equivalent to that variable that we created earlier on which
+
+74
+00:05:02,170 --> 00:05:04,300
+stored the opened file.
+
+75
+00:05:04,990 --> 00:05:09,990
+Now we can indent the rest of this and I can delete this file.close.
+
+76
+00:05:11,170 --> 00:05:14,080
+And you can see that it works exactly the same as before,
+
+77
+00:05:14,440 --> 00:05:19,440
+but now we no longer have to remember to close our file just by adding some
+
+78
+00:05:20,170 --> 00:05:21,040
+keywords here.
+
+79
+00:05:21,760 --> 00:05:25,810
+This 'with' keyword is going to manage that file directly.
+
+80
+00:05:26,050 --> 00:05:30,520
+So as soon as it notices that we're done with it, it'll close down the file.
+
+81
+00:05:31,120 --> 00:05:34,870
+It kinda makes me wish that something similar for tabs existed,
+
+82
+00:05:35,230 --> 00:05:37,540
+but let's get back to our Python code.
+
+83
+00:05:38,110 --> 00:05:41,350
+So now that we've opened up my_file.txt,
+
+84
+00:05:41,530 --> 00:05:43,780
+we've saved into a variable called file,
+
+85
+00:05:44,080 --> 00:05:49,080
+we've read that file and saved the contents that we read into a variable called
+
+86
+00:05:49,330 --> 00:05:54,190
+contents, and then we've printed it. Now, what if instead of reading the file,
+
+87
+00:05:54,220 --> 00:05:57,160
+I wanted to write to it? Well,
+
+88
+00:05:57,200 --> 00:06:02,200
+it's just as simple. So we can get hold of our file and then call
+
+89
+00:06:02,900 --> 00:06:03,733
+write.
+
+90
+00:06:04,160 --> 00:06:09,160
+And we can put any sort of string inside this write method to put into our file.
+
+91
+00:06:11,810 --> 00:06:14,840
+So let's put some text, let's call it new text.
+
+92
+00:06:15,290 --> 00:06:19,640
+And I want this new text to be written into my_file.txt.
+
+93
+00:06:20,420 --> 00:06:24,320
+And if we run the code as it is, you'll notice that it doesn't work
+
+94
+00:06:24,650 --> 00:06:27,860
+cause it says that unsupported operation,
+
+95
+00:06:28,100 --> 00:06:30,410
+this file is not writable.
+
+96
+00:06:30,830 --> 00:06:34,760
+And this is because we opened up the file in read-only mode.
+
+97
+00:06:35,210 --> 00:06:39,590
+So remember when we took a look at some of the parameters for this method open,
+
+98
+00:06:39,980 --> 00:06:44,980
+one of them was called mode and by default, it's set to read-only,
+
+99
+00:06:45,230 --> 00:06:50,030
+so 'r.' Now if we want to write to it, so make it editable,
+
+100
+00:06:50,060 --> 00:06:53,030
+we have the change, the mode to 'w' for write.
+
+101
+00:06:53,540 --> 00:06:55,640
+So now if I run the code again,
+
+102
+00:06:55,850 --> 00:06:58,460
+you can see that process finished with exit code zero
+
+103
+00:06:58,460 --> 00:07:01,040
+which we know to mean that everything was successful.
+
+104
+00:07:01,430 --> 00:07:05,330
+And if I take a look inside my_file.txt, all of the previous text
+
+105
+00:07:05,330 --> 00:07:10,330
+got magically deleted and replaced with the new text that I wanted to write.
+
+106
+00:07:11,240 --> 00:07:14,690
+Now, if you don't want to delete everything that is in the file
+
+107
+00:07:14,930 --> 00:07:17,060
+but you just want to add to it,
+
+108
+00:07:17,390 --> 00:07:22,390
+then you can change this mode from 'w' to 'a' and 'a' stands for append.
+
+109
+00:07:22,910 --> 00:07:26,390
+So just as we like to use list.append
+
+110
+00:07:26,420 --> 00:07:29,870
+and then we can add something to the end of the list, well,
+
+111
+00:07:29,870 --> 00:07:34,870
+the same thing happens with appending and writing. So I can write my new text and
+
+112
+00:07:36,380 --> 00:07:41,360
+I can add a new line, remember we can use \n to
+
+113
+00:07:41,360 --> 00:07:44,090
+add a new line, and then add the new text.
+
+114
+00:07:44,660 --> 00:07:49,660
+And now take a look at the after version when I hit run and we write this new
+
+115
+00:07:50,090 --> 00:07:54,050
+line and new text by appending it to my file.
+
+116
+00:07:54,350 --> 00:07:58,910
+It's gone at the very end of the file here. Now,
+
+117
+00:07:58,910 --> 00:08:03,200
+one of the important things you need to know when you're writing files is when
+
+118
+00:08:03,200 --> 00:08:08,200
+you try to open a file in write mode and that file doesn't exist,
+
+119
+00:08:08,750 --> 00:08:12,260
+then it's going to actually create it for you from scratch.
+
+120
+00:08:12,620 --> 00:08:14,990
+So let's go ahead and create a file
+
+121
+00:08:15,080 --> 00:08:19,160
+which I'll call new_file.txt,
+
+122
+00:08:19,520 --> 00:08:21,260
+make sure you've got the extension in there.
+
+123
+00:08:21,620 --> 00:08:26,620
+And we have the mode as write set. Because this new_file.txt doesn't exist
+
+124
+00:08:27,680 --> 00:08:31,640
+in this folder, then it's actually going to create it for us.
+
+125
+00:08:32,030 --> 00:08:36,590
+So now when I hit run, you can see that once this goes through,
+
+126
+00:08:36,830 --> 00:08:41,690
+that new file gets created and the new text has been written inside.
+
+127
+00:08:42,020 --> 00:08:46,550
+Now, remember this only works when you're in the write mode and when that file
+
+128
+00:08:46,580 --> 00:08:47,930
+doesn't currently exist.
+
+129
+00:08:48,580 --> 00:08:50,380
+So those are some basic 
+
+130
+00:08:50,380 --> 00:08:55,380
+ways of working with the file system. We can open and read, we can open and
+
+131
+00:08:56,640 --> 00:09:00,990
+write. And by using these different modes, append, read,
+
+132
+00:09:01,110 --> 00:09:01,943
+or write,
+
+133
+00:09:02,130 --> 00:09:06,150
+we can define what it is that we want to do with that file that we've opened.
+
+134
+00:09:07,110 --> 00:09:11,430
+Now that we've learned how to work with the file system, in the next lesson
+
+135
+00:09:11,490 --> 00:09:16,490
+I want to show you how we can fix our snake game so that we can write to
+
+136
+00:09:16,650 --> 00:09:21,600
+a text file our high score. And every time we open up and run our game,
+
+137
+00:09:21,870 --> 00:09:26,850
+we fetch that file and see what the previous high score was so that we can load
+
+138
+00:09:26,850 --> 00:09:31,470
+it into our game. So for all of that and more, I'll see you in the next lesson.
+

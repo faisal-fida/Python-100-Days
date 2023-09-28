@@ -1,0 +1,540 @@
+1
+00:00:00,210 --> 00:00:05,890
+I hope you've given that a good go and now I'm going to run through the solution with you. Here,
+
+2
+00:00:05,910 --> 00:00:12,660
+I've got those three links open and they're all documentation on W3schools for different methods
+
+3
+00:00:12,660 --> 00:00:13,470
+in Python.
+
+4
+00:00:13,980 --> 00:00:17,010
+The first one is a method called readlines.
+
+5
+00:00:17,340 --> 00:00:19,050
+It's really important that you have that
+
+6
+00:00:19,050 --> 00:00:23,250
+'s' because there's also another method called readline, the singular form.
+
+7
+00:00:23,760 --> 00:00:31,770
+What readlines does is it returns all the lines in the file as a list where each line is an item in
+
+8
+00:00:31,770 --> 00:00:32,700
+the list object.
+
+9
+00:00:33,150 --> 00:00:40,680
+For example, we can run this example and you can see that inside this demo file, readlines, there's
+
+10
+00:00:40,680 --> 00:00:49,800
+several lines in that file, and each line after running this method, gets added as a item inside a list
+
+11
+00:00:50,190 --> 00:00:51,210
+like this.
+
+12
+00:00:52,170 --> 00:00:57,450
+Now, the next method I showed you is the python string replace method.
+
+13
+00:00:58,050 --> 00:01:04,080
+And what this method does is it will replace a specified phrase with another specified phrase.
+
+14
+00:01:04,500 --> 00:01:10,410
+If the starting text was 'I like bananas' and you do txt.replace, you can replace the part where
+
+15
+00:01:10,410 --> 00:01:12,180
+it says bananas with apples.
+
+16
+00:01:12,480 --> 00:01:18,150
+And when you print, you can see the end outcome changes that text to I like apples.
+
+17
+00:01:18,930 --> 00:01:23,430
+Now, the final method that I showed you is the string strip method.
+
+18
+00:01:23,760 --> 00:01:29,720
+And what this does is it will remove the spaces at the beginning and at the end of the string.
+
+19
+00:01:30,030 --> 00:01:35,340
+So if our starting text has a lot of whitespace at the beginning and the end, and then we do txt.
+
+20
+00:01:35,490 --> 00:01:41,440
+strip, it'll get rid of all of that extra space and it ends up with just the word.
+
+21
+00:01:41,940 --> 00:01:45,360
+Now, if you have a space in between, another word
+
+22
+00:01:47,850 --> 00:01:54,420
+like this, if we hit run, then you can see that it keeps the space in between the words, but it gets
+
+23
+00:01:54,420 --> 00:01:59,280
+rid of any spaces on either side, which is really, really handy.
+
+24
+00:01:59,730 --> 00:02:03,370
+And you're going to see hopefully why it's really, really useful.
+
+25
+00:02:03,960 --> 00:02:10,710
+So now that we've reviewed these three methods that we haven't seen before, and normally you would probably
+
+26
+00:02:10,710 --> 00:02:14,670
+find these when you actually get stuck and when you're searching Stack Overflow.
+
+27
+00:02:15,480 --> 00:02:22,150
+But now that you're aware of those methods, let's go ahead and create a letter using our starting letter.
+
+28
+00:02:22,440 --> 00:02:25,170
+So I'm going to go ahead and delete everything in here.
+
+29
+00:02:25,560 --> 00:02:28,880
+And now let's go ahead and tackle this challenge.
+
+30
+00:02:29,220 --> 00:02:33,720
+So the first thing I want to do is to get hold of all of the invited names
+
+31
+00:02:33,930 --> 00:02:36,780
+and I want to turn them into a list. Now
+
+32
+00:02:36,780 --> 00:02:43,590
+I can, of course, rather tediously go and add some square brackets, add some quotation marks around
+
+33
+00:02:43,590 --> 00:02:46,400
+it, and then add it into my main.py.
+
+34
+00:02:46,830 --> 00:02:48,120
+But I don't want to do that.
+
+35
+00:02:48,460 --> 00:02:51,320
+Instead, I'm going to get Python to read the file.
+
+36
+00:02:51,690 --> 00:02:57,210
+So using our classic syntax with open, I'm going to open up that file.
+
+37
+00:02:57,690 --> 00:03:03,870
+But in order to open it up, I need to specify a string which is going to be the path that leads me
+
+38
+00:03:04,020 --> 00:03:06,160
+from here to here.
+
+39
+00:03:06,660 --> 00:03:08,880
+So let's think about how we might get there.
+
+40
+00:03:09,210 --> 00:03:16,350
+Now, this input output folder is on the same hierarchical level as our current file where we're writing
+
+41
+00:03:16,350 --> 00:03:16,980
+our code.
+
+42
+00:03:17,550 --> 00:03:24,240
+If we want to use a relative file path, we can simply say go into the current folder which is mail-
+
+43
+00:03:24,240 --> 00:03:28,410
+merge-project-start and then find a folder called Input.
+
+44
+00:03:29,730 --> 00:03:31,700
+Inside this folder called Input,
+
+45
+00:03:31,740 --> 00:03:35,430
+we're going to go to another folder called Names.
+
+46
+00:03:36,120 --> 00:03:41,640
+And then inside that folder of names, we're going to get a hold of that file called invited_names
+
+47
+00:03:41,640 --> 00:03:42,360
+.txt.
+
+48
+00:03:42,780 --> 00:03:46,980
+And PyCharm is super clever and it helps you out with a lot of typing.
+
+49
+00:03:47,250 --> 00:03:48,810
+So it saves you some time as well.
+
+50
+00:03:49,380 --> 00:03:52,260
+And then I'm going to save it as names_file.
+
+51
+00:03:53,390 --> 00:03:55,350
+Now that I've got this file open
+
+52
+00:03:55,350 --> 00:03:57,800
+I'm going to go ahead and read it.
+
+53
+00:03:57,810 --> 00:04:05,520
+So names_file.read. And once I've read it, I'm going to save it to a variable called names and
+
+54
+00:04:05,520 --> 00:04:07,410
+then I'm going to print out my names.
+
+55
+00:04:08,010 --> 00:04:15,960
+So now if I go ahead and hit run my main.py, you can see that it prints out all of these names individually
+
+56
+00:04:16,200 --> 00:04:19,690
+because it's getting hold of everything that's in here and just printing it out.
+
+57
+00:04:20,370 --> 00:04:25,650
+Now, at this point, I would really like these names to be in the format of a list.
+
+58
+00:04:25,980 --> 00:04:32,400
+So if you remember, that's where this readlines method is going to be really helpful because it returns
+
+59
+00:04:32,400 --> 00:04:36,290
+a list containing each line inside the file as a list item.
+
+60
+00:04:37,380 --> 00:04:42,330
+Now, instead of saying names_file.read, let's replace that with readlines.
+
+61
+00:04:43,080 --> 00:04:50,760
+Now, when I hit run, you can see it prints out names, and names is now magically turned into a list.
+
+62
+00:04:51,180 --> 00:04:59,340
+So now that we have our list of names which we've extracted from our invited_names.txt, then
+
+63
+00:04:59,340 --> 00:05:06,480
+we can go ahead and proceed to the next step where we're going to replace this placeholder in our starting
+
+64
+00:05:06,480 --> 00:05:09,160
+letter with each of these names.
+
+65
+00:05:09,690 --> 00:05:15,840
+Let's go ahead and create a constant at the top which I'll call PLACEHOLDER, and I'm going to set
+
+66
+00:05:15,840 --> 00:05:23,790
+it as the string which is the square brackets and then the word name because this is the string
+
+67
+00:05:23,790 --> 00:05:27,200
+that we want to replace from our starting letter.
+
+68
+00:05:27,900 --> 00:05:31,300
+The next step is to open up our starting letter.
+
+69
+00:05:31,320 --> 00:05:35,400
+So again, I'm going to use open and then I'm going to specify the path.
+
+70
+00:05:35,680 --> 00:05:40,820
+So from here, I'm going to go into the folder that's at the same level as this file,
+
+71
+00:05:41,160 --> 00:05:48,510
+so using the ./ and then I'm going to go into input again and then I'm going to go into instead
+
+72
+00:05:48,510 --> 00:05:50,340
+of names, I'm going to go to letters.
+
+73
+00:05:52,320 --> 00:06:00,210
+And I'm going to get hold of my starting letter and I'm going to open this as the letter_file. With the
+
+74
+00:06:00,210 --> 00:06:00,970
+letter_file
+
+75
+00:06:00,990 --> 00:06:08,430
+I'm simply just going to get a hold of the letter_contents by saying letter_file.read.
+
+76
+00:06:08,580 --> 00:06:14,640
+And this is going to be a normal read because I want all of the content inside that letter and it's
+
+77
+00:06:14,640 --> 00:06:18,390
+now going to be saved as a string inside my letter_contents.
+
+78
+00:06:19,290 --> 00:06:27,120
+The next step is to go through the letter contents and replace that placeholder with the actual name
+
+79
+00:06:27,120 --> 00:06:28,590
+that we've got in our list.
+
+80
+00:06:29,130 --> 00:06:35,940
+To do that we'll need the second method that I showed you which is the replace method. So we can get
+
+81
+00:06:35,940 --> 00:06:38,640
+hold of the text call, replace,
+
+82
+00:06:38,880 --> 00:06:44,310
+and then the output of this method will be a new string which has modified
+
+83
+00:06:44,310 --> 00:06:52,620
+this tex. I in our case we'll need a loop. So we can say for name in our list of names, let's go through
+
+84
+00:06:52,620 --> 00:07:00,390
+each of the names in that list and then let's get the letter_contents and replace the placeholder,
+
+85
+00:07:00,390 --> 00:07:05,400
+so the old string, with a new string which is going to be the name.
+
+86
+00:07:06,120 --> 00:07:11,130
+And once we've replaced it, then we're going to save it into a new_letter.
+
+87
+00:07:12,610 --> 00:07:18,220
+Now that we have our new letter, let's go ahead and print it out and see what it looks like.
+
+88
+00:07:21,520 --> 00:07:27,460
+So you can see all the contents of each of the letters being printed, but other than the very last
+
+89
+00:07:27,460 --> 00:07:33,550
+letter that looks pretty normal, every other letter has a new line after the name.
+
+90
+00:07:34,120 --> 00:07:40,630
+So remember when we printed out each of these names, you can see that after each of the names that
+
+91
+00:07:40,630 --> 00:07:46,930
+they've extracted from this list of invited names, there's a new line that's being added,
+
+92
+00:07:47,140 --> 00:07:49,440
+and you can see that with this \n.
+
+93
+00:07:49,450 --> 00:07:53,950
+The only one that doesn't have a new line is the very last one.
+
+94
+00:07:54,670 --> 00:08:00,200
+What we need to do is to strip the new line. Does that remind you of something?
+
+95
+00:08:00,220 --> 00:08:06,550
+Well, we have a method that we saw called strip which can take away any of the spaces at the beginning
+
+96
+00:08:06,550 --> 00:08:07,870
+and at the end of the string.
+
+97
+00:08:08,350 --> 00:08:14,980
+And then we can end up with an output which is the string without any of those leading and trailing
+
+98
+00:08:14,980 --> 00:08:15,580
+spaces.
+
+99
+00:08:16,300 --> 00:08:21,370
+We're going to loop through each of the names and then we're going to take the name and we're going
+
+100
+00:08:21,370 --> 00:08:23,830
+to call strip on each of those names.
+
+101
+00:08:24,250 --> 00:08:28,420
+And then we can save it to a variable called stripped_name.
+
+102
+00:08:29,800 --> 00:08:33,580
+And now we can use that stripped_name instead of the name.
+
+103
+00:08:34,780 --> 00:08:39,370
+Now if I go ahead and print out our new_letter,
+
+104
+00:08:41,820 --> 00:08:48,390
+you can see that each of the letters look exactly like how we want them to be. All we need to do now
+
+105
+00:08:48,420 --> 00:08:53,650
+is to write them into a new file. In previous lessons
+
+106
+00:08:53,670 --> 00:09:01,290
+I mentioned that when you open a file that doesn't exist, Python will actually create that file for
+
+107
+00:09:01,290 --> 00:09:01,580
+you.
+
+108
+00:09:02,190 --> 00:09:09,180
+Again, using our with open, I'm going to navigate to this ReadyToSend folder. Going from where we
+
+109
+00:09:09,180 --> 00:09:10,390
+are in main.py,
+
+110
+00:09:10,440 --> 00:09:15,950
+we're going to go to the output folder and then we're going to go to the ReadyToSend folder.
+
+111
+00:09:16,380 --> 00:09:21,430
+And then inside the ReadyToSend folder is where we're going to create our new file.
+
+112
+00:09:21,960 --> 00:09:27,150
+So let's think about what we want our file name to look like. In the intro I showed you
+
+113
+00:09:27,150 --> 00:09:33,400
+this is the format for each of the files; letter_for_Aang.txt.
+
+114
+00:09:33,540 --> 00:09:36,270
+And then this part is replaced by each of the names.
+
+115
+00:09:36,930 --> 00:09:45,620
+So let's write that letter_for_ the name and then .txt.
+
+116
+00:09:45,990 --> 00:09:50,600
+We can use an fstring to replace this part with the stripped_name.
+
+117
+00:09:51,030 --> 00:09:57,240
+So now we should be creating a new letter for each of the names in our list of names.
+
+118
+00:09:57,930 --> 00:10:03,090
+So now let's refer to this file as the completed_letter.
+
+119
+00:10:05,100 --> 00:10:10,500
+What we want to do with this completed_letter, which at the moment is blank, is we want to write to
+
+120
+00:10:10,500 --> 00:10:10,640
+it.
+
+121
+00:10:11,070 --> 00:10:18,150
+So to do that, we have to change the open mode from default which is 'r' for read to 'w' for
+
+122
+00:10:18,150 --> 00:10:18,610
+write.
+
+123
+00:10:19,110 --> 00:10:24,150
+And this will allow us to get our completed letter and write to it.
+
+124
+00:10:24,690 --> 00:10:25,980
+What do we want to write in there?
+
+125
+00:10:26,010 --> 00:10:30,120
+Well, we want to write the new letter that we've created, of course.
+
+126
+00:10:31,780 --> 00:10:40,300
+That's pretty much the end of our code, and all we have to do is to go ahead and hit run. And once I
+
+127
+00:10:40,300 --> 00:10:45,460
+hit run, you can see there's a whole bunch of letters that have been generated over here,
+
+128
+00:10:45,740 --> 00:10:51,610
+and if I click on each of them, you can see that the name placeholder has now been replaced
+
+129
+00:10:51,880 --> 00:10:56,050
+and I'm now ready to go to the printers and print all of these out.
+
+130
+00:10:57,160 --> 00:11:01,570
+So did you manage to figure out how to complete this project?
+
+131
+00:11:02,080 --> 00:11:08,050
+If not, be sure to review the relevant parts of the lessons today so that you're really confident with
+
+132
+00:11:08,050 --> 00:11:11,080
+what's going on and you understand all of this code.
+
+133
+00:11:11,920 --> 00:11:16,990
+If you want to take a look at the completed solution, then head over to the course resources and you'll
+
+134
+00:11:16,990 --> 00:11:22,810
+find a link to the final project code which actually works even within repl.it.
+
+135
+00:11:22,810 --> 00:11:26,940
+So you can delete all of these files and you can see it generate them from scratch.
+

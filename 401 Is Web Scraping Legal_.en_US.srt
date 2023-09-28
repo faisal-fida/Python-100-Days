@@ -1,0 +1,713 @@
+1
+00:00:00,510 --> 00:00:05,250
+Now that we've learned how to do web scraping with requests and Beautiful Soup,
+
+2
+00:00:05,880 --> 00:00:10,880
+it's time to step back for a moment and have a think about what we're allowed to
+
+3
+00:00:11,490 --> 00:00:16,490
+do and what might not be a good idea when we're scraping data from other
+
+4
+00:00:16,710 --> 00:00:20,640
+websites. Because after all, we don't own that data, right?
+
+5
+00:00:21,450 --> 00:00:26,370
+When you think about services like Google or Bing or any other search engine,
+
+6
+00:00:26,790 --> 00:00:31,790
+essentially what they're doing is they're constantly scraping data from all of the
+
+7
+00:00:32,940 --> 00:00:35,280
+websites that are listed on the internet.
+
+8
+00:00:35,850 --> 00:00:39,780
+And that's how they manage to get the information about what's on each page
+
+9
+00:00:40,110 --> 00:00:43,740
+and for it to show up for users who use their search service.
+
+10
+00:00:44,490 --> 00:00:49,490
+Now we have to step back for a moment and think about what is the law on web
+
+11
+00:00:49,920 --> 00:00:52,530
+scraping? What is legal and what is illegal?
+
+12
+00:00:53,250 --> 00:00:55,530
+Even as we were looking at Hacker News
+
+13
+00:00:55,530 --> 00:00:59,850
+just now I noticed that one of the articles in fact talks about the Genius law
+
+14
+00:00:59,880 --> 00:01:04,170
+suit with Google. And in terms of recent history,
+
+15
+00:01:04,170 --> 00:01:08,310
+there's two really famous cases, which is Genius suing Google
+
+16
+00:01:08,640 --> 00:01:12,810
+because they're saying that Google is scraping the song lyrics from their
+
+17
+00:01:12,810 --> 00:01:17,340
+website and they're actually displaying it without taking people to Genius.
+
+18
+00:01:17,910 --> 00:01:21,270
+So for example, if we're looking at the lyrics for Code m
+Monkey,
+
+19
+00:01:21,930 --> 00:01:26,930
+you can see that Google automatically shows the lyrics straight inside of
+
+20
+00:01:26,940 --> 00:01:27,773
+Google.
+
+21
+00:01:27,810 --> 00:01:32,760
+That means that a user can potentially just get all the information they need,
+
+22
+00:01:33,120 --> 00:01:34,410
+say all of the song
+
+23
+00:01:34,410 --> 00:01:39,410
+lyrics to this song, without ever needing to visit the website where this lyric
+
+24
+00:01:39,960 --> 00:01:40,793
+might come from.
+
+25
+00:01:41,430 --> 00:01:45,600
+And that lyric might've been compiled by somebody on Genius.
+
+26
+00:01:46,170 --> 00:01:50,190
+Genius has a lyric annotation website. And of course,
+
+27
+00:01:50,280 --> 00:01:51,510
+as with all websites,
+
+28
+00:01:51,510 --> 00:01:56,510
+they rely on users actually visiting their website to make money or to show ads.
+
+29
+00:01:57,630 --> 00:02:00,570
+And if Google simply just shows it in their search results,
+
+30
+00:02:00,870 --> 00:02:03,930
+then this can be a problem for websites like Genius.
+
+31
+00:02:04,470 --> 00:02:09,470
+So they sued them over this and actually ended up losing the lawsuit.
+
+32
+00:02:10,560 --> 00:02:15,560
+Another really famous example of a lawsuit over scraping is hiQ versus
+
+33
+00:02:17,130 --> 00:02:22,080
+LinkedIn. So hiQ was scraping data from LinkedIn to use commercially.
+
+34
+00:02:22,620 --> 00:02:27,360
+So LinkedIn sued them and ended up losing in the lawsuit.
+
+35
+00:02:28,050 --> 00:02:29,250
+Based on these lawsuits,
+
+36
+00:02:29,280 --> 00:02:33,960
+we have a little bit of a better idea of what is legal when it comes to web
+
+37
+00:02:33,960 --> 00:02:36,180
+scraping and what is not legal.
+
+38
+00:02:36,780 --> 00:02:41,460
+The law actually seems to favor web scraping in the sense that you're allowed to
+
+39
+00:02:41,460 --> 00:02:43,350
+scrape a website data
+
+40
+00:02:43,920 --> 00:02:47,430
+as long as you think about a couple of things.
+
+41
+00:02:48,090 --> 00:02:53,090
+A lot of people have been writing about web scraping being legal based on the
+
+42
+00:02:53,370 --> 00:02:55,860
+LinkedIn versus hiQ case.
+
+43
+00:02:56,250 --> 00:03:01,060
+But the important thing to remember is that this is not a blanket sort of,
+
+44
+00:03:01,300 --> 00:03:04,690
+you can do whatever you want, scraping any website's data.
+
+45
+00:03:05,320 --> 00:03:10,320
+It only means that data that is publicly available and not copyrighted is
+
+46
+00:03:11,560 --> 00:03:16,390
+probably legal for companies to scrape. Now,
+
+47
+00:03:16,420 --> 00:03:18,400
+if you are using this data privately
+
+48
+00:03:18,400 --> 00:03:22,510
+like we are creating some sort of service for ourselves, then it doesn't really
+
+49
+00:03:22,510 --> 00:03:24,160
+matter. You're  just a user.
+
+50
+00:03:24,820 --> 00:03:28,150
+The difficulty comes when you're trying to commercialize that data,
+
+51
+00:03:28,150 --> 00:03:32,590
+when you set up a business and your business kind of involves somebody else's
+
+52
+00:03:32,590 --> 00:03:35,890
+data. That is a bit of a gray area. Now,
+
+53
+00:03:35,950 --> 00:03:38,170
+the things that we definitely know are
+
+54
+00:03:38,170 --> 00:03:40,720
+that you can't commercialize copyrighted content.
+
+55
+00:03:40,990 --> 00:03:45,790
+So if you scrape data from YouTube and you scraped the video data,
+
+56
+00:03:45,820 --> 00:03:50,820
+you can't just use that video on your own website. That is still not allowed
+
+57
+00:03:51,040 --> 00:03:56,040
+because that video is copyrighted and it's created by a YouTube user and the
+
+58
+00:03:56,650 --> 00:04:00,820
+copyright belongs to that user, not to you. So this is still illegal.
+
+59
+00:04:01,600 --> 00:04:05,620
+This might also apply to other things like a Medium blog post that somebody else
+
+60
+00:04:05,620 --> 00:04:09,310
+wrote or a piece of music that's being hosted on Spotify.
+
+61
+00:04:09,760 --> 00:04:12,430
+So copyrighted content you can't commercialize.
+
+62
+00:04:13,030 --> 00:04:17,110
+The second thing is that you can't scrape data that's behind authentication.
+
+63
+00:04:17,470 --> 00:04:21,100
+So if you have to log into Facebook in order to scrape the data,
+
+64
+00:04:21,310 --> 00:04:22,810
+then that's pretty much illegal.
+
+65
+00:04:23,380 --> 00:04:27,460
+And the reason for this is when you sign up as a user to any of these services
+
+66
+00:04:27,460 --> 00:04:30,400
+like Facebook or Twitter or Instagram,
+
+67
+00:04:30,820 --> 00:04:35,020
+there's a policy in there that you are agreeing to when you sign up that says
+
+68
+00:04:35,050 --> 00:04:39,610
+I agree to not use this data that I obtained on this website commercially.
+
+69
+00:04:40,180 --> 00:04:43,120
+But the data that is not behind authentication,
+
+70
+00:04:43,420 --> 00:04:46,720
+so any website that you can access as it is,
+
+71
+00:04:47,140 --> 00:04:51,490
+they can't bind you to a policy because you haven't agreed to anything.
+
+72
+00:04:51,970 --> 00:04:56,260
+So if the website has data that just out there in the open that you can access
+
+73
+00:04:56,260 --> 00:05:00,430
+without logging in and the content is not something that can be copyrighted,
+
+74
+00:05:00,670 --> 00:05:03,640
+then it is fair game legally. Now,
+
+75
+00:05:03,670 --> 00:05:07,780
+just because it's legal doesn't mean that you can actually do it.
+
+76
+00:05:08,350 --> 00:05:13,350
+A lot of websites will use captcha or recaptcha in order to prevent bots like
+
+77
+00:05:13,750 --> 00:05:18,610
+our Python code to get data from their websites. Every single time,
+
+78
+00:05:18,640 --> 00:05:21,850
+you're agreeing to one of these captchas, it's testing
+
+79
+00:05:21,850 --> 00:05:24,100
+whether to see if your actually a real human
+
+80
+00:05:24,340 --> 00:05:28,840
+or if you just a bit of code that is trying to access their data. Captcha was the
+
+81
+00:05:28,840 --> 00:05:33,340
+old version where you had the type in some squiggle letters and recaptcha is the
+
+82
+00:05:33,340 --> 00:05:36,130
+new version where you just have to tick a checkbox.
+
+83
+00:05:36,460 --> 00:05:38,560
+And it's actually really interesting how it works.
+
+84
+00:05:39,400 --> 00:05:43,210
+It looks at things like how your mouse approaches the checkbox,
+
+85
+00:05:43,210 --> 00:05:47,020
+how you maybe quiver a little bit before you actually check it
+
+86
+00:05:47,260 --> 00:05:51,280
+and other things like your cookies and the store data that they have on you.
+
+87
+00:05:51,970 --> 00:05:56,170
+Essentially, this service is used by websites to prevent people
+
+88
+00:05:56,230 --> 00:06:00,590
+to scrape their data using a bot. The other thing to remember is that,
+
+89
+00:06:00,830 --> 00:06:03,560
+you know, if you get sued by somebody like LinkedIn
+
+90
+00:06:03,560 --> 00:06:08,420
+because you're using their data and you're building a business on it
+
+91
+00:06:08,450 --> 00:06:10,970
+like hiQ is, then you can
+
+92
+00:06:10,970 --> 00:06:14,060
+at any moment be hit with a really expensive lawsuit
+
+93
+00:06:14,450 --> 00:06:18,620
+and you are going to have to pay a lot of money to lawyer up in order to contest
+
+94
+00:06:18,620 --> 00:06:20,420
+this and actually to fight them in court.
+
+95
+00:06:20,930 --> 00:06:25,400
+Unless you have the money to lawyer up and fight a company like LinkedIn,
+
+96
+00:06:26,000 --> 00:06:29,810
+it's really important to know what are the implications of web scraping,
+
+97
+00:06:29,930 --> 00:06:33,590
+especially when you're selling that data as a part of your business.
+
+98
+00:06:34,250 --> 00:06:37,040
+But in addition to the sort of legal side of things,
+
+99
+00:06:37,190 --> 00:06:40,940
+the other part that you should really think about is the ethics of web scraping.
+
+100
+00:06:41,390 --> 00:06:44,810
+This is basically putting aside what is legal and what is illegal,
+
+101
+00:06:45,020 --> 00:06:46,640
+but more thinking about what is right
+
+102
+00:06:46,640 --> 00:06:51,640
+and what's wrong because let's say that you've built a website and you've got
+
+103
+00:06:51,770 --> 00:06:56,000
+some sort of bot that's constantly scraping it for data, data that you know,
+
+104
+00:06:56,300 --> 00:06:58,730
+has been generated by your own users
+
+105
+00:06:58,970 --> 00:07:03,950
+that's really precious and that you might even charge for it, then,
+
+106
+00:07:03,980 --> 00:07:07,400
+is it really right for somebody to do that?
+
+107
+00:07:07,940 --> 00:07:11,780
+So I often follow the rule where if I don't want something to happen to me,
+
+108
+00:07:11,840 --> 00:07:16,160
+I try to not do that to others. In terms of the ethics, a couple of things
+
+109
+00:07:16,170 --> 00:07:18,470
+I would recommend abiding by is
+
+110
+00:07:18,770 --> 00:07:21,800
+if you come across a website and they have a public API
+
+111
+00:07:21,860 --> 00:07:26,210
+which we've already learned about and we know how to use, then always
+
+112
+00:07:26,210 --> 00:07:30,770
+always go for the API. If it requires an application, then apply for it.
+
+113
+00:07:31,100 --> 00:07:35,570
+Don't just go ahead and try to take their data when there's already a route for
+
+114
+00:07:35,570 --> 00:07:37,310
+you to use and access their data.
+
+115
+00:07:38,480 --> 00:07:42,590
+The second thing is to respect the web owner, because you know,
+
+116
+00:07:42,590 --> 00:07:46,550
+you don't want somebody to access your website a million times a second,
+
+117
+00:07:46,610 --> 00:07:49,520
+potentially making your website go down
+
+118
+00:07:49,670 --> 00:07:51,680
+or it could count as a DDoS
+
+119
+00:07:51,680 --> 00:07:55,310
+attack where it affects other users using the website.
+
+120
+00:07:56,090 --> 00:07:57,290
+When you are on a website,
+
+121
+00:07:57,590 --> 00:08:02,360
+they actually provide a way for you to tell what it is that you can scrape and
+
+122
+00:08:02,360 --> 00:08:02,810
+what it is
+
+123
+00:08:02,810 --> 00:08:07,810
+you can't. At the very end of the URLs after the.com or.co.uk,
+
+124
+00:08:08,930 --> 00:08:13,220
+if you put a forward slash and put robots.txt, you can see
+
+125
+00:08:13,220 --> 00:08:18,220
+this is the advice that they give to any bots that are potentially scraping
+
+126
+00:08:18,260 --> 00:08:19,093
+their website.
+
+127
+00:08:19,610 --> 00:08:24,610
+User agent is the person who is scraping, the person or the bot that's scraping,
+
+128
+00:08:25,280 --> 00:08:27,890
+and it tells you what are the things that it disallows.
+
+129
+00:08:28,220 --> 00:08:32,690
+So it doesn't want you to access the /vote?, /reply?, 
+
+130
+00:08:32,690 --> 00:08:35,300
+/submitted?, /threads?.
+
+131
+00:08:35,600 --> 00:08:39,950
+So basically any of these end points are ones that they don't really want you to
+
+132
+00:08:39,950 --> 00:08:41,840
+use. For example,
+
+133
+00:08:41,840 --> 00:08:45,050
+here I've access the /reply?
+
+134
+00:08:45,380 --> 00:08:48,890
+which is a way to log in and reply to a particular comment.
+
+135
+00:08:49,280 --> 00:08:51,740
+Now that really shouldn't be a bot kind of action
+
+136
+00:08:51,740 --> 00:08:54,230
+because then it means the data that's generated
+
+137
+00:08:54,530 --> 00:08:57,690
+or the replies on here will be automated, right?
+
+138
+00:08:57,690 --> 00:09:01,980
+You actually want humans to comment and reply on the articles rather than some
+
+139
+00:09:01,980 --> 00:09:02,813
+sort of robot.
+
+140
+00:09:03,660 --> 00:09:07,590
+So these are the paths that they don't want you to access as a bot.
+
+141
+00:09:08,040 --> 00:09:10,890
+And finally, it even tells you a crawl-delay.
+
+142
+00:09:10,920 --> 00:09:15,630
+So this is the number of seconds that you should leave between each time you hit
+
+143
+00:09:15,630 --> 00:09:16,463
+up the website.
+
+144
+00:09:17,250 --> 00:09:22,200
+If we're writing Python code and we're using Beautiful Soup and response to
+
+145
+00:09:22,200 --> 00:09:24,210
+scrape data from YCombinator,
+
+146
+00:09:24,480 --> 00:09:28,590
+we could potentially get that code to run every fraction of a second right?
+
+147
+00:09:28,590 --> 00:09:33,450
+I could just write a for loop and just get this to keep scraping again and again
+
+148
+00:09:33,450 --> 00:09:34,283
+and again.
+
+149
+00:09:34,350 --> 00:09:38,880
+But that means that you're adding a lot of extra traffic and a lot of extra
+
+150
+00:09:38,880 --> 00:09:43,560
+demand on their servers which could potentially mean that real users,
+
+151
+00:09:43,560 --> 00:09:48,560
+real humans who want to access their website might not be able to do it at a fast
+
+152
+00:09:48,780 --> 00:09:51,090
+speed. So this is the reason why
+
+153
+00:09:51,120 --> 00:09:53,880
+when a lot of people accessing the same website,
+
+154
+00:09:53,910 --> 00:09:58,910
+say when a new ticket has been released for Glastonbury or some sort of big
+
+155
+00:09:59,100 --> 00:10:01,950
+concert, that the website can go down.
+
+156
+00:10:02,010 --> 00:10:05,430
+Its because a lot of servers can't cope with so much demand.
+
+157
+00:10:05,850 --> 00:10:08,070
+And when that demand is coming from a for loop,
+
+158
+00:10:08,340 --> 00:10:12,150
+then you can imagine that you're just adding a lot of extra work onto the web
+
+159
+00:10:12,150 --> 00:10:15,480
+server. So always respect their crawl-delay
+
+160
+00:10:15,480 --> 00:10:20,190
+if you see one in the robots.txt, and even if you don't see one,
+
+161
+00:10:20,280 --> 00:10:24,450
+just try to limit your rate so that you don't max out their server.
+
+162
+00:10:24,840 --> 00:10:27,450
+I recommend not scraping more than once a minute.
+
+163
+00:10:28,200 --> 00:10:32,340
+The YCombinator's of robots.txt is actually quite permissive.
+
+164
+00:10:32,370 --> 00:10:35,430
+It allows you to do pretty much anything you want,
+
+165
+00:10:35,760 --> 00:10:37,950
+but that's not true for all websites.
+
+166
+00:10:38,160 --> 00:10:40,260
+If you look at the robots.txt for LinkedIn,
+
+167
+00:10:40,590 --> 00:10:43,770
+you can see that they really don't want anyone to scrape it.
+
+168
+00:10:43,770 --> 00:10:45,450
+There is a bit of legal jargon,
+
+169
+00:10:45,480 --> 00:10:49,470
+there's a lot more disallows that you can see, right?
+
+170
+00:10:49,950 --> 00:10:53,820
+This is probably not a website where I would scrape their data and try to build a
+
+171
+00:10:53,820 --> 00:10:54,690
+company around.
+
+172
+00:10:55,620 --> 00:10:59,940
+So remember that this is a piece of text that the website owners have written
+
+173
+00:11:00,180 --> 00:11:04,920
+for you to look at to see what you can do and you can't do with their website.
+
+174
+00:11:05,280 --> 00:11:06,990
+So before you scrape a website,
+
+175
+00:11:07,320 --> 00:11:12,320
+always go to the root of their URL and check out their robots.txt and follow
+
+176
+00:11:14,490 --> 00:11:18,420
+the ethical codes of conduct when you're trying to commercialize a project.
+
+177
+00:11:18,810 --> 00:11:22,770
+So this is just the quick tip on the law and ethics of web scraping
+
+178
+00:11:22,980 --> 00:11:24,960
+just so that you don't get into trouble in the future.
+

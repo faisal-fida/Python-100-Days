@@ -1,0 +1,828 @@
+1
+00:00:00,690 --> 00:00:05,640
+The first thing we have to figure out is how exactly does email work?
+
+2
+00:00:06,330 --> 00:00:10,800
+We all know that we can log on to Gmail or yahoo.com and we can start filling
+
+3
+00:00:10,800 --> 00:00:14,580
+out an email. It's pretty much second nature to everybody by now.
+
+4
+00:00:15,180 --> 00:00:18,510
+But, what actually happens behind the scenes? Well,
+
+5
+00:00:18,510 --> 00:00:20,310
+let's say that we have a sender,
+
+6
+00:00:20,430 --> 00:00:25,080
+angela@gmail.com and a recipient timmy@yahoo.com.
+
+7
+00:00:25,590 --> 00:00:25,860
+Now,
+
+8
+00:00:25,860 --> 00:00:30,860
+in order to send this email from my Gmail account to another email account,
+
+9
+00:00:31,290 --> 00:00:35,340
+what happens behind the scene is that there's a Gmail mail server
+
+10
+00:00:35,790 --> 00:00:40,080
+which will receive my message. And then there's a Yahoo mail server
+
+11
+00:00:40,380 --> 00:00:45,380
+which will store the message until Timmy logs onto his computer and logs on to
+
+12
+00:00:46,290 --> 00:00:50,640
+yahoo.com, which downloads the email from the Yahoo mail server.
+
+13
+00:00:51,660 --> 00:00:56,100
+So this email is going to move between all of these steps.
+
+14
+00:00:56,610 --> 00:01:00,510
+And in order to do this, it relies on something called SMTP,
+
+15
+00:01:00,960 --> 00:01:03,330
+the simple mail transfer protocol.
+
+16
+00:01:04,290 --> 00:01:09,290
+And this contains all of the rules that determine how an email is received by
+
+17
+00:01:09,600 --> 00:01:14,600
+mail servers passed onto the next mail server and how email can be sent around
+
+18
+00:01:15,210 --> 00:01:17,550
+the internet. Now,
+
+19
+00:01:17,550 --> 00:01:22,550
+a good analogy for SMTP is if you imagine these mail servers as a post office
+
+20
+00:01:24,210 --> 00:01:26,790
+and Timmy's computer being the mailbox.
+
+21
+00:01:27,150 --> 00:01:32,150
+Then SMTP is basically the postman who knows how to handle the email and take it
+
+22
+00:01:34,290 --> 00:01:38,520
+to various post offices and eventually put it into Timmy's computer.
+
+23
+00:01:39,480 --> 00:01:42,570
+So in Python, there's a module called SMTP lib
+
+24
+00:01:42,960 --> 00:01:47,960
+which allows us to use SMTP to send our email to any address on the internet. To
+
+25
+00:01:50,730 --> 00:01:54,660
+start, I recommend setting up two fresh email accounts. Create
+
+26
+00:01:54,680 --> 00:01:56,880
+a new email account with Gmail,
+
+27
+00:01:57,060 --> 00:01:59,850
+and also create a new email account with Yahoo.
+
+28
+00:02:00,330 --> 00:02:04,830
+These new email accounts will be perfect for testing your code and following
+
+29
+00:02:04,830 --> 00:02:07,410
+along with the video tutorials, plus,
+
+30
+00:02:07,440 --> 00:02:09,360
+we'll be making those email accounts a little bit
+
+31
+00:02:09,410 --> 00:02:11,600
+less secure to test our code. So
+
+32
+00:02:11,630 --> 00:02:14,780
+that's another reason to set up some testing email addresses for now.
+
+33
+00:02:15,710 --> 00:02:19,880
+After you've set up your new email accounts, head over to the course resources and
+
+34
+00:02:19,880 --> 00:02:23,030
+download the zip file with the starting code for today's lessons.
+
+35
+00:02:24,260 --> 00:02:26,660
+And then we're going to open that up using PyCharm.
+
+36
+00:02:27,380 --> 00:02:30,470
+Now I want you to take a look inside the starting project.
+
+37
+00:02:30,890 --> 00:02:35,750
+There is a main.py file, and there's also a quotes.txt file.
+
+38
+00:02:36,140 --> 00:02:38,900
+Don't worry about this files for now. We're going to come back to it
+
+39
+00:02:39,020 --> 00:02:42,110
+when we explore the datetime module. For now,
+
+40
+00:02:42,140 --> 00:02:44,330
+we're going to be working within the main.py.
+
+41
+00:02:44,810 --> 00:02:49,810
+And I want to show you how you can use this smtplib library to start sending
+
+42
+00:02:51,230 --> 00:02:53,720
+emails straight from your Python code.
+
+43
+00:02:54,710 --> 00:02:57,740
+As always we import the module smtplib
+
+44
+00:02:58,220 --> 00:03:00,250
+and then we start using it.
+
+45
+00:03:00,880 --> 00:03:04,360
+Once we've imported this SMTP library
+
+46
+00:03:04,450 --> 00:03:09,450
+essentially, we can use it to create a new SMTP object. So that we're going to
+
+47
+00:03:09,790 --> 00:03:12,190
+call that object a new connection,
+
+48
+00:03:12,580 --> 00:03:16,900
+because it's basically a way for us to be able to connect to our email
+
+49
+00:03:16,900 --> 00:03:19,390
+provider's SMTP email server.
+
+50
+00:03:19,990 --> 00:03:24,990
+We're going to do this by tapping into the smtplib and then creating a object
+
+51
+00:03:25,270 --> 00:03:29,590
+from the SMTP class. Now we create this object
+
+52
+00:03:29,620 --> 00:03:34,620
+one of the things that we should specify is the location of our email provider's
+
+53
+00:03:36,190 --> 00:03:39,400
+SMTP server. Now for Gmail,
+
+54
+00:03:39,430 --> 00:03:42,670
+it simply smtp.gmail.com,
+
+55
+00:03:43,060 --> 00:03:45,280
+but it's different for every email provider.
+
+56
+00:03:45,850 --> 00:03:49,900
+So that means if your email and in @gmail.com,
+
+57
+00:03:50,260 --> 00:03:55,240
+then this would be how you would connect to your email server. In our case,
+
+58
+00:03:55,270 --> 00:04:00,270
+I've created a testing email called appbreweryinfo@gmail.com.
+
+59
+00:04:02,170 --> 00:04:07,170
+And this part that's before the outside is the identity of my email account and
+
+60
+00:04:09,580 --> 00:04:14,350
+the part after the outside is the identity of my email provider.
+
+61
+00:04:14,890 --> 00:04:19,840
+So in my case, I need to connect to smtp.gmail.com.
+
+62
+00:04:20,380 --> 00:04:24,790
+But if you have a different email provider, for example, if you're with Hotmail,
+
+63
+00:04:24,820 --> 00:04:28,420
+it's smtp.live.com. And if you're with Yahoo,
+
+64
+00:04:28,450 --> 00:04:32,680
+it's smtp.mail.yahoo.com. And if you're
+
+65
+00:04:32,680 --> 00:04:37,680
+with a completely different email provider then simply just Google your email
+
+66
+00:04:37,780 --> 00:04:40,360
+provider and the SMTP information,
+
+67
+00:04:40,600 --> 00:04:44,860
+and you should find an article somewhere that describes a URL that looks
+
+68
+00:04:44,860 --> 00:04:48,670
+something like this. Once I've created my connection,
+
+69
+00:04:48,760 --> 00:04:53,760
+the next thing I need to do is to go ahead and call starttls.
+
+70
+00:04:55,060 --> 00:04:58,510
+Now TLS stands for transport layer security,
+
+71
+00:04:59,080 --> 00:05:03,700
+and it's a way of securing our connection to all email server.
+
+72
+00:05:04,150 --> 00:05:08,560
+So that way, when we're sending an email, if somebody else intercepts
+
+73
+00:05:08,590 --> 00:05:13,590
+our email somewhere along the line and they try to read it, because this is
+
+74
+00:05:13,960 --> 00:05:14,793
+enabled,
+
+75
+00:05:14,920 --> 00:05:18,970
+that message will be encrypted and it will be impossible for them to read what
+
+76
+00:05:18,970 --> 00:05:20,710
+is in the content of our email.
+
+77
+00:05:21,340 --> 00:05:25,600
+So this line basically will make this connection secure. Now,
+
+78
+00:05:25,600 --> 00:05:27,640
+once we've secured our connection,
+
+79
+00:05:27,670 --> 00:05:30,610
+the next thing to do is to actually log in.
+
+80
+00:05:30,940 --> 00:05:32,950
+So we'll call connection.login,
+
+81
+00:05:33,580 --> 00:05:38,050
+and here we have to provide a username and a password.
+
+82
+00:05:38,560 --> 00:05:43,560
+So the username is simply the email that we use to log on to our email service.
+
+83
+00:05:44,920 --> 00:05:45,940
+So in my case,
+
+84
+00:05:45,940 --> 00:05:50,940
+it's just my email, and the password I've just made up a new password
+
+85
+00:05:52,690 --> 00:05:56,830
+but it's the same password that you would use to log onto your email service as
+
+86
+00:05:56,830 --> 00:06:01,160
+well. So my made up password is abcd1234,
+
+87
+00:06:01,580 --> 00:06:02,720
+and then two brackets.
+
+88
+00:06:03,220 --> 00:06:04,053
+yeah.
+
+89
+00:06:07,180 --> 00:06:11,290
+And once I've logged in to my email provider,
+
+90
+00:06:11,740 --> 00:06:15,790
+the final thing I want to do is to actually send my mail.
+
+91
+00:06:16,450 --> 00:06:19,690
+Now, the from address is my email
+
+92
+00:06:20,260 --> 00:06:24,490
+and the to address is the person who I want to send the email to.
+
+93
+00:06:25,030 --> 00:06:30,030
+So I've set up a new dummy account called appbrewerytesting@yahoo.com and make
+
+94
+00:06:33,970 --> 00:06:38,710
+sure that you haven't got any typos in your email, your password,
+
+95
+00:06:38,980 --> 00:06:43,810
+the SMTP URL, or the recipient email address.
+
+96
+00:06:44,560 --> 00:06:48,280
+Now finally, the last thing we want to add is the message.
+
+97
+00:06:48,280 --> 00:06:51,970
+So this is what we actually want to send in our email.
+
+98
+00:06:52,510 --> 00:06:56,950
+And just like we did with our file when we opened it at the very end,
+
+99
+00:06:56,980 --> 00:07:00,040
+once we're done with it, we're going to close it off as well.
+
+100
+00:07:00,670 --> 00:07:02,890
+So now we can go ahead and hit run.
+
+101
+00:07:05,290 --> 00:07:08,230
+And you might get a number of errors at this point.
+
+102
+00:07:08,710 --> 00:07:11,170
+Now it's important that if you do get an error,
+
+103
+00:07:11,560 --> 00:07:16,180
+then you first check to make sure that you haven't got any typos here,
+
+104
+00:07:16,510 --> 00:07:19,900
+here, here, or here.
+
+105
+00:07:20,380 --> 00:07:22,180
+But once you've checked that through,
+
+106
+00:07:22,300 --> 00:07:26,800
+then the next thing you can do is you can actually look at this error code and
+
+107
+00:07:26,800 --> 00:07:30,010
+follow the URL. Now, in our case,
+
+108
+00:07:30,100 --> 00:07:33,700
+the reason is because, by default, Gmail
+
+109
+00:07:33,700 --> 00:07:37,150
+doesn't just let anybody access your email account.
+
+110
+00:07:37,900 --> 00:07:42,900
+And you have other ways of making your account even more secure. In order to send
+
+111
+00:07:43,810 --> 00:07:46,630
+email from a Gmail account with Python
+
+112
+00:07:46,900 --> 00:07:50,800
+the first thing you have to do is to lower those security boundaries.
+
+113
+00:07:51,250 --> 00:07:55,660
+So head over to your username and then go to manage your Google account.
+
+114
+00:07:56,050 --> 00:07:56,740
+And then here,
+
+115
+00:07:56,740 --> 00:08:00,790
+you're going to go to security and you gotta to make sure that this section
+
+116
+00:08:01,090 --> 00:08:05,440
+where it says 2-step verification or use your phone to sign in are both turned
+
+117
+00:08:05,500 --> 00:08:10,450
+off. And then the section where it says less secure apps,
+
+118
+00:08:10,720 --> 00:08:13,180
+you have to make sure this actually says on.
+
+119
+00:08:13,450 --> 00:08:17,860
+So we have to turn on the access from our less secure apps,
+
+120
+00:08:18,190 --> 00:08:22,720
+which is of course our Python code. At this point,
+
+121
+00:08:22,780 --> 00:08:23,950
+when you look at your email,
+
+122
+00:08:23,950 --> 00:08:28,420
+you'll get a critical security alert from Google telling you that access for the
+
+123
+00:08:28,420 --> 00:08:30,610
+less secure apps has been turned on.
+
+124
+00:08:31,240 --> 00:08:36,240
+And this is why I recommend when you're using Python code to access your email
+
+125
+00:08:36,550 --> 00:08:41,550
+that you actually set up a new email address instead of using your primary email
+
+126
+00:08:42,490 --> 00:08:43,323
+address.
+
+127
+00:08:43,840 --> 00:08:48,840
+And that's why I've also created a new dummy account in order to actually run
+
+128
+00:08:50,380 --> 00:08:55,210
+this code. Once we've done all of this, then we can go back and
+
+129
+00:08:55,410 --> 00:08:58,830
+hit run again. And you'll see this time
+
+130
+00:08:58,950 --> 00:09:01,950
+we see the process finished with exit code zero,
+
+131
+00:09:02,250 --> 00:09:04,920
+which means all of the code ran successfully.
+
+132
+00:09:05,700 --> 00:09:08,670
+And now, if I take a look at my sent box,
+
+133
+00:09:08,700 --> 00:09:11,790
+you can see that I've got this message that's been sent.
+
+134
+00:09:12,300 --> 00:09:16,650
+And if I take a look at the email address which the email was sent to,
+
+135
+00:09:17,070 --> 00:09:20,490
+then you can see that in my inbox, there's actually nothing here.
+
+136
+00:09:20,820 --> 00:09:22,770
+But if take a look inside spam,
+
+137
+00:09:23,430 --> 00:09:27,930
+then there is our brilliant email that came from our Python code.
+
+138
+00:09:29,610 --> 00:09:32,970
+So first thing I'm going to do is change that to not spam
+
+139
+00:09:33,000 --> 00:09:35,730
+to make sure that it goes into the actual inbox.
+
+140
+00:09:36,120 --> 00:09:40,170
+And the next thing we want to be able to do is how can we make our emails seem
+
+141
+00:09:40,170 --> 00:09:43,920
+less like spam? So an email without a subject
+
+142
+00:09:43,920 --> 00:09:48,000
+headline is prime target for being filtered as spam.
+
+143
+00:09:48,570 --> 00:09:53,160
+So let's go into our email and see how we can add a subject line.
+
+144
+00:09:53,820 --> 00:09:58,050
+It's pretty simple. It goes inside the message parameter.
+
+145
+00:09:58,410 --> 00:10:02,100
+And all we have to do is just write the word subject:
+
+146
+00:10:02,550 --> 00:10:06,630
+and then we can put in whatever it is that we want to use as the subject of the
+
+147
+00:10:06,630 --> 00:10:08,970
+email like this. Now,
+
+148
+00:10:09,000 --> 00:10:12,270
+how do you put in the content or the body of the email? Well,
+
+149
+00:10:12,360 --> 00:10:17,360
+you add two new lines using \n\n and then you can put the
+
+150
+00:10:17,970 --> 00:10:22,560
+content. This is the body of my email,
+
+151
+00:10:23,640 --> 00:10:27,120
+and let's just split this up so it's a little bit easier to read
+
+152
+00:10:29,760 --> 00:10:34,320
+and now I can hit run again. And once that's done,
+
+153
+00:10:34,350 --> 00:10:36,060
+you can see that in my Gmail
+
+154
+00:10:36,060 --> 00:10:41,060
+in the sent folder that this message now has a subject line and a body.
+
+155
+00:10:43,230 --> 00:10:46,020
+And it's the same thing when I go to my
+
+156
+00:10:46,130 --> 00:10:46,963
+right
+
+157
+00:10:52,220 --> 00:10:55,280
+And when I take a look at this new email that came through,
+
+158
+00:10:55,310 --> 00:11:00,230
+you can see the subject line and the body of the email being separated.
+
+159
+00:11:01,280 --> 00:11:06,260
+Now we can actually avoid having to write this line, connection.close
+
+160
+00:11:06,590 --> 00:11:11,180
+if we do the same trick as we did with file opening. We use the
+
+161
+00:11:11,180 --> 00:11:12,350
+with keyword.
+
+162
+00:11:12,740 --> 00:11:17,570
+So we can say that with smtplib.SMTP to create the connection
+
+163
+00:11:17,990 --> 00:11:20,630
+and then we save that as the connection,
+
+164
+00:11:21,110 --> 00:11:25,490
+then we can indent all of the rest of the code inside this block.
+
+165
+00:11:25,880 --> 00:11:29,420
+And once it's done with sending the email,
+
+166
+00:11:29,480 --> 00:11:32,570
+it will close off that connection automatically.
+
+167
+00:11:33,140 --> 00:11:37,550
+So this is how you could send email using Python and smtplib.
+
+168
+00:11:37,970 --> 00:11:41,450
+Now there's quite a few things here that are prone to errors,
+
+169
+00:11:42,020 --> 00:11:45,920
+especially given that we're typing a lot of things in plain text,
+
+170
+00:11:46,220 --> 00:11:50,420
+like our email, our password and a bunch of things.
+
+171
+00:11:50,480 --> 00:11:54,130
+So if you are getting errors when you're running your code
+
+172
+00:11:54,340 --> 00:11:59,260
+or if it's not doing what you expect it to, make sure that you've checked against
+
+173
+00:11:59,290 --> 00:12:03,730
+all of these strings, and it's actually what you expected it to be.
+
+174
+00:12:04,240 --> 00:12:08,410
+Secondly, make sure that whichever account you're sending from that
+
+175
+00:12:08,410 --> 00:12:13,030
+you actually go ahead into the account and modify the security settings.
+
+176
+00:12:13,510 --> 00:12:18,130
+For example, let's say I wanted to send from this email address,
+
+177
+00:12:18,190 --> 00:12:22,120
+so I'm going to put that in here. And then in this case,
+
+178
+00:12:22,150 --> 00:12:26,020
+the email server I need to connect to will be Yahoo's email server,
+
+179
+00:12:26,380 --> 00:12:29,740
+which is under the URL that I showed you before,
+
+180
+00:12:30,010 --> 00:12:35,010
+smtp.mail.yahoo.com.
+
+181
+00:12:36,280 --> 00:12:40,810
+And that is actually not enough. So let me just change my recipient.
+
+182
+00:12:43,950 --> 00:12:44,550
+All right.
+
+183
+00:12:44,550 --> 00:12:49,110
+And I hit run. This is the error that you'll see. It says,
+
+184
+00:12:49,110 --> 00:12:53,370
+SMTP server disconnected, connection unexpectedly closed.
+
+185
+00:12:53,700 --> 00:12:57,120
+Now this could be down to a number of reasons, for example,
+
+186
+00:12:57,150 --> 00:12:59,730
+a typo in this part,
+
+187
+00:13:00,210 --> 00:13:04,590
+but also if your account doesn't actually allow less secure apps.
+
+188
+00:13:04,950 --> 00:13:07,590
+So on Yahoo, the process is a little bit different.
+
+189
+00:13:07,650 --> 00:13:09,330
+You have to go into your account,
+
+190
+00:13:09,630 --> 00:13:13,170
+go to account info and then go to our account security.
+
+191
+00:13:14,850 --> 00:13:16,980
+And you'll have to log in again
+
+192
+00:13:19,860 --> 00:13:22,920
+and generate a new app password.
+
+193
+00:13:23,520 --> 00:13:27,420
+So we're going to create a new app and we're going to give it a custom name,
+
+194
+00:13:27,900 --> 00:13:30,990
+Python code, and then click generate.
+
+195
+00:13:31,170 --> 00:13:36,170
+And now we have a app password to use for our Python code.
+
+196
+00:13:37,170 --> 00:13:41,430
+So now back over here, we change this password to
+
+197
+00:13:41,430 --> 00:13:45,960
+the one that we just copied over. And now if I hit run,
+
+198
+00:13:46,200 --> 00:13:50,370
+that error should go away and we should get process finished with exit code
+
+199
+00:13:50,370 --> 00:13:54,600
+zero. And when I take a look over here in my inbox,
+
+200
+00:13:57,540 --> 00:14:01,320
+I've got my email from appbrewerytesting@yahoo.com.
+
+201
+00:14:03,360 --> 00:14:05,550
+So check your security settings,
+
+202
+00:14:05,610 --> 00:14:10,140
+check your spam and check that you haven't made any typos.
+
+203
+00:14:11,250 --> 00:14:12,600
+And if none of that works,
+
+204
+00:14:12,990 --> 00:14:15,780
+then just simply try doing everything I did in the video
+
+205
+00:14:16,080 --> 00:14:20,550
+but with a new email account that you set up with Gmail.
+
+206
+00:14:21,150 --> 00:14:25,800
+Then you can use the same SMTP address and the same process that you saw in the
+
+207
+00:14:25,800 --> 00:14:27,210
+video to try this out.
+
